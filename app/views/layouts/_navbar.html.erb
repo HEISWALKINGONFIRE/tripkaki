@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><%= image_tag("logo_white.png") %></a>
+      <%= link_to root_path, class:"navbar-brand", method: "get" do  %><%= image_tag("logo_white.png") %><% end %> 
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,10 +18,10 @@
       <ul class="nav navbar-nav navbar-right">
         
         <% if user_signed_in? %>
+          <li><%= link_to "Profile", current_user %></li>
           <li>
           <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
           </li>
-          <li><%= link_to "Profile", current_user %></li>
         <% else %>
           <li><a href="/users/sign_up">Sign Up</a></li>
           <li>
