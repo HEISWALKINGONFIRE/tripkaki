@@ -16,3 +16,19 @@
  
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  font-family: 'Lato', serif;
+}
+
+.navbar-custom {
+	background: rgb(29,161,242);
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 0;
+	border: 0;
+	li a, a{
+		color: white !important;
+	}
+}
