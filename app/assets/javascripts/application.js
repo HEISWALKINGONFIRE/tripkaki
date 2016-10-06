@@ -15,3 +15,9 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+$(function() {
+	$(".index_page").css("height", $(window).height()+"px");
+	$(".bg2").css("height", $(window).height()+"px");
+
+});
