@@ -16,6 +16,36 @@
  
 @import "bootstrap-sprockets";
 @import "bootstrap";
+/*text*/
+
+/*background image*/
+.index_page
+{
+	background-image: url("golden-bridge-wallpaper-8.jpg");
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+
+	h2, h1
+	{
+		text-align: center;
+		color: white;
+		font-weight:bold;
+		font-weight: 900;
+		position: relative;
+		z-index: 3;
+		margin: 0;
+	}
+
+}
+
+.bg2 {
+	width: 100%;
+	background-color: grey;
+	position: absolute;
+	z-index: 2;
+	opacity: 0.5; 
 
 body {
   font-family: 'Lato', serif;
