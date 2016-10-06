@@ -1,0 +1,24 @@
+<h1>Packages#show</h1>
+<h1>Username: <%= @user.username %></h1>
+
+<% if @user.id == current_user.id%>
+
+	<%= link_to "Edit", edit_package_path(@package)%>
+	<%= link_to "Delete", package_path(@package), method: 'delete' %>
+
+<% end %>
+
+	<li>Title: <%= @package.title %> </li>
+	<li>Destination: <%= @package.destination %></li>
+	<li>State: <%= @package.state %> </li>
+	<li>Country: <%= @country.name %></li>
+	<li>Day: <%= @package.day %> </li>
+	<li>Description: <%= @package.description %> </li>
+	<li>Accommodation: <%= @package.accommodation %> </li>
+	<li>Transportation: <%= @package.transportation %> </li>
+	<li>Meals: <%= @package.meal %> </li>
+	<li>Maximum participant: <%= @package.head %> </li>
+	<li>Price: <br> Public Tour - RM<%= @package.public_price%>/pax <br> Private Tour - RM<%= @package.private_price %></li>
+	<li>
+
+<%= link_to "#{@user.username}'s packages" %>, user_packages_path(@user.id) %>

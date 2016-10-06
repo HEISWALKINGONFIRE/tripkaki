@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  devise_for :users, :path => 'accounts'
+
+  resources :users do 
+    resources :packages, only: [:index]
+  end
+
+
+  resources :packages, except: [:index]
+
+  get '/packages/subregion_options' => 'packages#subregion_options'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

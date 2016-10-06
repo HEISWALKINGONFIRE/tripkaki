@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006032111) do
+ActiveRecord::Schema.define(version: 20161006064932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "packages", force: :cascade do |t|
+    t.string   "title"
+    t.string   "destination"
+    t.string   "state"
+    t.string   "country"
+    t.integer  "day"
+    t.text     "description"
+    t.string   "accommodation"
+    t.string   "transportation"
+    t.string   "meal"
+    t.integer  "head"
+    t.integer  "public_price"
+    t.integer  "private_price"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "packages", ["user_id"], name: "index_packages_on_user_id", using: :btree
+
+  create_table "tour_dates", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "package_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tour_dates", ["package_id"], name: "index_tour_dates_on_package_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -40,4 +70,6 @@ ActiveRecord::Schema.define(version: 20161006032111) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "packages", "users"
+  add_foreign_key "tour_dates", "packages"
 end
