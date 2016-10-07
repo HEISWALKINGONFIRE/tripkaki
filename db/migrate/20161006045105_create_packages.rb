@@ -2,13 +2,13 @@ class CreatePackages < ActiveRecord::Migration
   def change
     create_table :packages do |t|
 
-    	t.string :title
+    	t.string :title, null: false
   		t.string :destination
-  		t.string :state
-  		t.string :country
-  		t.integer :day
-  		t.text :description
-  		t.string :accommodation
+  		t.string :state, null: false
+  		t.string :country, null: false
+  		t.integer :day, null:false
+  		t.text :description, null:false
+  		t.boolean :accommodation, default: true
   		t.string :transportation
   		t.string :meal
   		t.integer :head

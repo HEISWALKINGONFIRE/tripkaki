@@ -33,6 +33,8 @@ class PackagesController < ApplicationController
 
     @country = Carmen::Country.coded(@package.country)
 
+    @subregions = @country.subregions
+    @state = @subregions.coded(@package.state)
   end
 
   def update

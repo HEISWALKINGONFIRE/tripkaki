@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :path => 'accounts'
+ get '/packages/subregion_options' => 'packages#subregion_options'
 
   resources :users do 
     resources :packages, only: [:index]
   end
-  root to: "pages#index"
+
+  devise_for :users
 
   resources :packages, except: [:index]
 
-  get '/packages/subregion_options' => 'packages#subregion_options'
+  root to: "pages#index"
+
+
+ 
 
 end
