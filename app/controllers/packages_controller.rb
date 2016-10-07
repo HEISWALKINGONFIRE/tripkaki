@@ -1,4 +1,5 @@
 class PackagesController < ApplicationController
+  before_action :authenticate_tour_guide!, only: [:new, :create, :edit, :delete, :update]
 
   def index
     @user = User.find(params[:user_id])
@@ -66,6 +67,10 @@ class PackagesController < ApplicationController
 
   def package_params
     params.require(:package).permit(:title, :destination, :state, :country, :day, :description, :accommodation, :transportation, :meal, :head, :public_price, :private_price, {images: []})
+  end
+
+  def authenticate_tour_guide!
+    redirect_to root_path unless current_user.role == "tour_guide"
   end
 
 end

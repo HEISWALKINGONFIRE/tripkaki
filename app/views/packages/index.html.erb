@@ -3,16 +3,8 @@
 
 <h3>User: <%= @user.email %></h3>
 
-<% if @user.id == current_user.id %>
 
-	<h3><%= link_to "Create a new package!", new_package_path, method: "get" %></h3>
 
-<% end %>
 
-<% @packages.each do |p| %>
-
-	<li><%=link_to p.title, package_path(p.id)%></li>
-
-<% end %>
 
 

@@ -1,1 +1,6 @@
 <h1>Welcome back, <%= @user.first_name + " " + @user.last_name %></h1>
+<% if @packages.present? %>
+	<% @packages.each do |p| %>
+		<li><%=link_to p.title, package_path(p.id)%></li>
+	<% end %>
+<% end %>

@@ -14,7 +14,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+      <% if user_signed_in? && current_user.role == "tour_guide" %>
 
+          <li><%= link_to "Create a new package", new_package_path, method: "get" %></li>
+
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
