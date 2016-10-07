@@ -28,6 +28,9 @@
 			&:hover {
 				border: 2px #2196f3 solid;
 			}
+			&:active { 
+				// border-style: outset;
+			}
 			i {
 				font-size: 45px;
 				margin-bottom: 22px;
