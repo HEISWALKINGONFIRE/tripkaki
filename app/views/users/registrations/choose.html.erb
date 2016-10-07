@@ -1,8 +1,14 @@
-<%= form_tag({ :action => "choose" },class: "role-selection" , remote: true  ) do %>
-	<%= hidden_field_tag(:role, 0) %>
-	<%= submit_tag "Sign Up as tourist" %>
-<% end %>
-<%= form_tag({ :action => "choose" },class: "role-selection" , remote: true  ) do %>
-	<%= hidden_field_tag(:role, 1) %>
-	<%= submit_tag "Sign Up as tour guide" %>
-<% end %>
+<div class="container">
+	<div class="choose-center">
+		<h1>Sign Up as a TripKaki member</h1>
+		<%= form_tag({ :action => "choose" },class: "role-selection" , remote: true  ) do %>
+			<%= hidden_field_tag(:role, 0) %>
+			<button type="submit"><i class="fa fa-camera-retro" aria-hidden="true"></i><br>Sign up as tourist</button>
+		<% end %>
+		<%= form_tag({ :action => "choose" },class: "role-selection" , remote: true  ) do %>
+			<%= hidden_field_tag(:role, 1) %>
+			<button type="submit"><i class="fa fa-flag" aria-hidden="true"></i>
+<br>Sign up as tour guide</button>
+	<% end %>
+	</div>
+</div>
