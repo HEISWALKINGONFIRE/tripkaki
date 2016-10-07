@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
 
+
  get '/packages/subregion_options' => 'packages#subregion_options'
 
-  resources :users do 
+  devise_scope :user do
+  	post '/user/registrations/choose' => 'user/registrations#choose'
+ 	end
+  devise_for :users, :controllers => {
+  	:registrations => "user/registrations"
+  }
+
+
+  resources :users, only: [:show] do 
     resources :packages, only: [:index]
   end
 
-  devise_for :users
 
   resources :packages, except: [:index]
 
