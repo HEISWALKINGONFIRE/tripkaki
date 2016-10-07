@@ -1,11 +1,12 @@
+
 <%= form_for @package do |f| %>
 
 	<li><%= f.label :title %>
-		<%= f.text_field :title %> 
+		<%= f.text_field :title, class: "form-control"  %> 
 	</li>
 
 	<li><%= f.label :destination %>
-		<%= f.text_field :destination %>
+		<%= f.text_field :destination, class: "form-control" %>
 	</li>
 
 	<div class="field">
@@ -51,3 +52,19 @@
 	<li><%= f.submit :submit %></li>
 
 <% end %>
+
+
+
+
+<!-- 
+<div class="title">
+    <label for="title">Title</label>
+    <input type="text" class="title" placeholder="Title">
+</div>
+
+<div class="destination">
+	<label for="destination">Destination</label>
+	<input type="text" class="destination" placeholder="Destination">
+</div>
+
+<div class =""> -->
