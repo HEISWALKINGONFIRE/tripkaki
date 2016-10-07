@@ -5,25 +5,25 @@
 		<%= f.text_field :title , class:"form-control", placeholder:"Title" %> 
 	</li>
 
-	<li><%= f.label :destination , class:"" %>
-		<%= f.text_field :destination %>
+	<li><%= f.label :destination  %>
+		<%= f.text_field :destination , class:"form-control", placeholder:"Destination"%>
 	</li>
 
-	<div class="field">
+	<div class="form-group">
 	  <%= f.label :country %><br />
-	  <%= f.country_select :country, priority: %w(MY SG), input_html: {id: "package_country"}, prompt: 'Please select a country' %>
+	  <%= f.country_select :country, priority: %w(MY SG), input_html: {id: "package_country"}, prompt: 'Please select a country' , class:"form-control" %>
 	</div>
 
-	<div class="field">
+	<div class="form-group">
   <%= f.label :state %><br />
-  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country} %>
+  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country} , class:"form-control" %>
 	</div>
 
-	<li> Duration of the trip: <%= f.select :day, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]),{:prompt => "-Select number of days"} %> 
+	<li> Duration of the trip<br> <%= f.select :day, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]),{:prompt => "-Select number of days"} %> 
 	</li>
 
 	<li><%= f.label :description %>
-		<%= f.text_area :description %> 		
+		<%= f.text_area :description , class:"form-control" %> 		
 	</li>
 
 	<li><%= f.label :accommodation %>
