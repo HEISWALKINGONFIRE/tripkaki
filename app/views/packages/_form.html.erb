@@ -1,0 +1,53 @@
+<%= form_for @package do |f| %>
+
+	<li><%= f.label :title %>
+		<%= f.text_field :title %> 
+	</li>
+
+	<li><%= f.label :destination %>
+		<%= f.text_field :destination %>
+	</li>
+
+	<div class="field">
+	  <%= f.label :country %><br />
+	  <%= f.country_select :country, priority: %w(MY SG), input_html: {id: "package_country"}, prompt: 'Please select a country' %>
+	</div>
+
+	<div class="field">
+  <%= f.label :state %><br />
+  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country} %>
+	</div>
+
+	<li> Duration of the trip: <%= f.select :day, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]),{:prompt => "-Select number of days"} %> 
+	</li>
+
+	<li><%= f.label :description %>
+		<%= f.text_area :description %> 		
+	</li>
+
+	<li><%= f.label :accommodation %>
+		<%= f.text_field :accommodation %>
+	</li>
+
+	<li><%= f.label :transportation %>
+		<%= f.text_field :transportation %>
+	</li>
+
+	<li><%= f.label :meal %>
+		<%= f.text_field :meal %>
+	</li>
+
+	<li>Number of participants: <%= f.select :head, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]]),{:prompt => "-Select number of participants"} %> 
+	</li>
+
+	<li><%= f.label :public_price, "Price per pax" %>
+		<%= f.text_field :public_price %>
+	</li>
+
+	<li><%= f.label :private_price, "Price for a private tour" %>
+		<%= f.text_field :private_price %>
+	</li>
+
+	<li><%= f.submit :submit %></li>
+
+<% end %>

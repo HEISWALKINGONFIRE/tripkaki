@@ -6,6 +6,7 @@ class CreatePrivateReservations < ActiveRecord::Migration
       t.integer :head_count
       t.date :start_date
       t.date :end_date
+
       t.timestamps null: false
     end
   end
