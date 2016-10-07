@@ -14,6 +14,7 @@ class CreatePackages < ActiveRecord::Migration
   		t.integer :head
   		t.integer :public_price
   		t.integer :private_price
+      t.json :images
 
 
   		t.references :user, index: true, foreign_key: true

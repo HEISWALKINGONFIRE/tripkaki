@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20161007050729) do
     t.integer  "head"
     t.integer  "public_price"
     t.integer  "private_price"
+    t.json     "images"
     t.integer  "user_id"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
