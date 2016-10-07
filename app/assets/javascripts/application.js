@@ -27,7 +27,7 @@ $(function() {
 
   $(function(){
       $(".element").typed({
-          strings: ["KIND OF HOLIDAY.", "SWEET MEMORIES", "AWESOME TRIPS", "SPECIAL GETAWAY" ],
+          strings: ["KIND OF HOLIDAY.", "SWEET MEMORIES.", "AWESOME TRIPS.", "SPECIAL GETAWAY." ],
           typeSpeed: 55
       });
   });
