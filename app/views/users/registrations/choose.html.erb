@@ -1,7 +1,6 @@
-<%= form_tag(:action => "choose") do %>
+<%= form_tag({:action => "choose"}, { class: "role-selection" }) do %>
 	<%= label_tag(:user_role, "Sign Up as a tourist") %>
 	<%= radio_button("user", "role", 0) %>
 	<%= label_tag(:user_role, "Sign Up as a tour guide") %>
 	<%= radio_button("user", "role", 1) %>
-	<%= submit_tag "Sign Up", class: "btn btn-info" %>
 <% end %>
