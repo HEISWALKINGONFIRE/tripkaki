@@ -48,7 +48,7 @@
 				font-size: 20px;
 			}
 		}
-		p{
+		p {
 			font-size: 65px;
 			padding-top: 5px;
 			color: white;
@@ -62,10 +62,11 @@
 	}
 	.input-group{
 		padding-top: 30px;
+		padding-right :80px;
+		padding-left: 80px;
 
 		#searchbar{
 			height: 60px;
-			padding-top: 20px;
 			border-top-left-radius: 2em;
 			border-bottom-left-radius: 2em;	
 		}
@@ -115,4 +116,26 @@ body {
 	position: absolute;
 	z-index: 3;
 	width: 100%;
+}
+
+.typed-cursor {
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
 }

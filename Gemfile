@@ -14,6 +14,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'carmen-rails'
 gem "font-awesome-rails"
+gem "typedjs-rails", "~> 1.0.4"
 
 group :development, :test do
   gem 'byebug'

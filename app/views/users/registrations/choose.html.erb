@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
 	<div class="choose-center">
 		<h1>Sign Up as a TripKaki member</h1>
@@ -12,3 +13,14 @@
 	<% end %>
 	</div>
 </div>
+=======
+
+<%= form_tag({ :action => "choose" },class: "role-selection" , remote: true  ) do %>
+	<%= hidden_field_tag(:role, 0) %>
+	<%= submit_tag "Sign Up as tourist" %>
+<% end %>
+<%= form_tag({ :action => "choose" },class: "role-selection" , remote: true  ) do %>
+	<%= hidden_field_tag(:role, 1) %>
+	<%= submit_tag "Sign Up as tour guide" %>
+<% end %>
+>>>>>>> 84cbdb84ca75b0d23de1c535bed5a8907825c497
