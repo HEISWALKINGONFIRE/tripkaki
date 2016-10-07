@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :packages
 
+  validates_presence_of :first_name, :last_name, :username
+
   enum role: {
   	user: 0,
   	tour_guide: 1
