@@ -18,7 +18,7 @@
 	<li>Transportation: <%= @package.transportation %> </li>
 	<li>Meals: <%= @package.meal %> </li>
 	<li>Maximum participant: <%= @package.head %> </li>
-	<li>Price: <br> Public Tour - RM<%= @package.public_price%>/pax <br> Private Tour - RM<%= @package.private_price %></li>
+	<li>Price (Private Tour): RM<%= @package.private_price %></li>
 	<li>
 
 <%= link_to "#{@user.username}'s packages", user_packages_path(@user.id) %>
