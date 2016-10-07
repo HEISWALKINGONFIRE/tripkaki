@@ -10,8 +10,8 @@
 
 	<li>Title: <%= @package.title %> </li>
 	<li>Destination: <%= @package.destination %></li>
-	<li>State: <%= @package.state %> </li>
 	<li>Country: <%= @country.name %></li>
+	<li>State: <%= @state.name %> </li>
 	<li>Day: <%= @package.day %> </li>
 	<li>Description: <%= @package.description %> </li>
 	<li>Accommodation: <%= @package.accommodation %> </li>
@@ -21,4 +21,4 @@
 	<li>Price: <br> Public Tour - RM<%= @package.public_price%>/pax <br> Private Tour - RM<%= @package.private_price %></li>
 	<li>
 
-<%= link_to "#{@user.username}'s packages" %>, user_packages_path(@user.id) %>
+<%= link_to "#{@user.username}'s packages", user_packages_path(@user.id) %>
