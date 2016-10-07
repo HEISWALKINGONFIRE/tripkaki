@@ -8,9 +8,12 @@ prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
   end
 
   def choose
-    @role = params[:user][:role]
+    # byebug
+    @role = params[:role]
     build_resource({})
-    render 'devise/registrations/new'
+    respond_to do |format|
+      format.js {}
+    end
   end
 
   # POST /resource

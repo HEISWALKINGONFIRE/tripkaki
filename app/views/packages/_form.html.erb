@@ -26,7 +26,7 @@
 	</li>
 
 	<li><%= f.label :accommodation %>
-		<%= f.text_field :accommodation %>
+	<%= f.check_box :accommodation %>
 	</li>
 
 	<li><%= f.label :transportation %>
@@ -42,7 +42,7 @@
 
 	<li><%= f.label :public_price, "Price per pax" %>
 		<%= f.text_field :public_price %>
-	</li>
+	</li>	
 
 	<li><%= f.label :private_price, "Price for a private tour" %>
 		<%= f.text_field :private_price %>

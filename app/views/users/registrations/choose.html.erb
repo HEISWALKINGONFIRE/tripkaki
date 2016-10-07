@@ -1,10 +1,9 @@
-<div class="container">
-	<div class="choose">
-	<%= form_tag({:action => "choose"}, { class: "role-selection" }) do %>
-		<%= label_tag(:user_role, "Sign Up as a tourist") %>
-		<%= radio_button("user", "role", 0) %>
-		<%= label_tag(:user_role, "Sign Up as a tour guide") %>
-		<%= radio_button("user", "role", 1) %>
-	<% end %>
-	</div>
-</div>
+
+<%= form_tag({ :action => "choose" },class: "role-selection" , remote: true  ) do %>
+	<%= hidden_field_tag(:role, 0) %>
+	<%= submit_tag "Sign Up as tourist" %>
+<% end %>
+<%= form_tag({ :action => "choose" },class: "role-selection" , remote: true  ) do %>
+	<%= hidden_field_tag(:role, 1) %>
+	<%= submit_tag "Sign Up as tour guide" %>
+<% end %>
