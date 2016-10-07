@@ -1,4 +1,4 @@
-class Package < ActiveRecord::Base<<<<<<< HEAD
+class Package < ActiveRecord::Base
 
 	belongs_to :user
 	has_many :private_reservations

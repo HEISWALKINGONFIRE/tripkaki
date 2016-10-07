@@ -14,4 +14,11 @@ class User < ActiveRecord::Base
   	user: 0,
   	tour_guide: 1
   }
+  before_save :assign_role_if_not_exists
+
+  private
+
+  def assign_role_if_not_exists
+  	self.role ||= 0
+  end
 end
