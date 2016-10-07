@@ -1,11 +1,11 @@
-
+ <div class="form-group-row" >
 <%= form_for @package do |f| %>
 
 	<li><%= f.label :title %>
-		<%= f.text_field :title%> 
+		<%= f.text_field :title , class:"form-control", placeholder:"Title" %> 
 	</li>
 
-	<li><%= f.label :destination %>
+	<li><%= f.label :destination  %>
 		<%= f.text_field :destination %>
 	</li>
 
@@ -53,5 +53,4 @@
 
 <% end %>
 
-
-
+</div>
