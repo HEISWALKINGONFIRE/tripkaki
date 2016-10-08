@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+//= require typed
 
 $(function() {
 	$(".index_page").css("height", $(window).height()+"px");
@@ -24,3 +25,10 @@ $(function() {
 		$(this).parent().submit();
 	});
 });
+
+  $(function(){
+      $(".element").typed({
+          strings: ["KIND OF HOLIDAY.", "SWEET MEMORIES.", "AWESOME TRIPS.", "SPECIAL GETAWAY." ],
+          typeSpeed: 55
+      });
+  });
