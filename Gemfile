@@ -15,6 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'carmen-rails'
 gem "font-awesome-rails"
 gem "typedjs-rails", "~> 1.0.4"
+gem 'filterrific'
 
 group :development, :test do
   gem 'byebug'

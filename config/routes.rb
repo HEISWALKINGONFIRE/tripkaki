@@ -11,12 +11,9 @@ Rails.application.routes.draw do
   }
 
 
-  resources :users, only: [:show] do 
-    resources :packages, only: [:index]
-  end
+  resources :users
 
-
-  resources :packages, except: [:index]
+  resources :packages
 
   root to: "pages#index"
 

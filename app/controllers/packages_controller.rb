@@ -2,8 +2,16 @@ class PackagesController < ApplicationController
   before_action :authenticate_tour_guide!, only: [:new, :create, :edit, :delete, :update]
 
   def index
-    @user = User.find(params[:user_id])
-    @packages = @user.packages
+    @filterrific = initialize_filterrific(
+        Package,
+        params[:filterrific]
+      ) or return
+      @packages = @filterrific.find.page(params[:page])
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
   end
 
   def new
