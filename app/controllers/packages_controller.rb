@@ -4,7 +4,10 @@ class PackagesController < ApplicationController
   def index
     @filterrific = initialize_filterrific(
         Package,
-        params[:filterrific]
+        params[:filterrific],
+        select_options: {
+          sorted_by: Package.options_for_sorted_by,
+        }
       ) or return
       @packages = @filterrific.find.page(params[:page])
 

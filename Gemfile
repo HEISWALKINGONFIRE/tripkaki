@@ -16,6 +16,7 @@ gem 'carmen-rails'
 gem "font-awesome-rails"
 gem "typedjs-rails", "~> 1.0.4"
 gem 'filterrific'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug'

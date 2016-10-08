@@ -1,25 +1,23 @@
 <div id="filterrific_results">
 
   <div>
-    <%= page_entries_info students # provided by will_paginate %>
+    <%= page_entries_info packages %>
   </div>
 
   <table>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
+      <th>Title</th>
       <th>Country</th>
-      <th>Registered at</th>
+      <th>State</th>
     </tr>
-    <% students.each do |student| %>
+    <% packages.each do |package| %>
       <tr>
-        <td><%= link_to(student.full_name, student_path(student)) %></td>
-        <td><%= student.email %></td>
-        <td><%= student.country_name %></td>
-        <td><%= student.decorated_created_at %></td>
+        <td><%= package.title %></td>
+        <td><%= package.country %></td>
+        <td><%= package.state %></td>
       </tr>
     <% end %>
   </table>
 </div>
 
-<%= will_paginate students # provided by will_paginate %>
+<%= will_paginate packages %>
