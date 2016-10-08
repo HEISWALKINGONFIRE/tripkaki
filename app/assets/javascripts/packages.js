@@ -1,4 +1,9 @@
 $(function() {
+
+	$("tr[data-link]").click(function() {
+  	window.location = $(this).data("link")
+	});	
+
   return $('select#package_country').change(function(event) {
 
     var country, select_wrapper, url;
@@ -9,4 +14,7 @@ $(function() {
     return select_wrapper.load(url);
  
   });
+
 });
+
+
