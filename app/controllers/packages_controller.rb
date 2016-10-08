@@ -35,13 +35,15 @@ class PackagesController < ApplicationController
 
   end
 
-  def edit
-    @package = Package.find(params[:id])
-  end
-
   def show
     @package = Package.find(params[:id])
     @user = @package.user
+    @public_reservations = @package.public_reservations.order(:start_date)
+
+  end
+
+  def edit
+    @package = Package.find(params[:id])
   end
 
   def update
