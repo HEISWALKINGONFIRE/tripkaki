@@ -1,0 +1,2 @@
+module PublicReservationsHelper
+end

@@ -23,10 +23,6 @@ class PackagesController < ApplicationController
 
   end
 
-  def edit
-    @package = Package.find(params[:id])
-  end
-
   def show
     @package = Package.find(params[:id])
     @user = @package.user
@@ -35,6 +31,12 @@ class PackagesController < ApplicationController
 
     @subregions = @country.subregions
     @state = @subregions.coded(@package.state)
+    @public_reservations = @package.public_reservations.order(:start_date)
+
+  end
+
+  def edit
+    @package = Package.find(params[:id])
   end
 
   def update
