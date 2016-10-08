@@ -42,11 +42,6 @@ class PackagesController < ApplicationController
   def show
     @package = Package.find(params[:id])
     @user = @package.user
-
-    @country = Carmen::Country.coded(@package.country)
-
-    @subregions = @country.subregions
-    @state = @subregions.coded(@package.state)
   end
 
   def update

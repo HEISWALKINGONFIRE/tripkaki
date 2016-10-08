@@ -11,11 +11,13 @@
       <th>State</th>
     </tr>
     <% packages.each do |package| %>
-      <tr>
-        <td><%= package.title %></td>
-        <td><%= package.country %></td>
-        <td><%= package.state %></td>
-      </tr>
+        <tr>
+      <%= link_to package do %>
+          <td><%= package.title %></td>
+          <td><%= package.country_name %></td>
+          <td><%= package.state_name %></td>
+      <% end %>
+        </tr>
     <% end %>
   </table>
 </div>

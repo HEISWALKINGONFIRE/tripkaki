@@ -21,7 +21,8 @@ class Package < ActiveRecord::Base
 	 end
 	}
 	scope :search_query, -> (query) {where('LOWER(title) LIKE ?', "#{query}%")}
-
+	scope :price_range, ->(min, max) { where(price: min..max)}
+	
 	filterrific(
 	  default_filter_params: { sorted_by: 'created_at_desc' },
 	  available_filters: [
@@ -39,4 +40,12 @@ class Package < ActiveRecord::Base
       ['Name (ZA)', 'name_desc']
      ]
   end
+
+  def country_name
+  	Carmen::Country.coded(self.country).name
+	end
+
+ 	def state_name
+ 		Carmen::Country.coded(self.country).subregions.coded(self.state).name
+ 	end
 end
