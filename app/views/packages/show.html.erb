@@ -1,14 +1,20 @@
 <h1>Packages#show</h1>
-<h1>Username: <%= @user.username %></h1>
+<h4>Username: <%= @user.username %></h4>
+
+<h4>Title: <%= @package.title %> </h4>
+
 
 <% if @user.id == current_user.id%>
+
+	<%= link_to "Create a Public Tour!", new_package_public_reservation_path(@package), method: 'get' %>
+
+	<br>
 
 	<%= link_to "Edit", edit_package_path(@package)%>
 	<%= link_to "Delete", package_path(@package), method: 'delete' %>
 
 <% end %>
 
-	<li>Title: <%= @package.title %> </li>
 	<li>Destination: <%= @package.destination %></li>
 	<li>Country: <%= @country.name %></li>
 	<li>State: <%= @state.name %> </li>
@@ -19,6 +25,47 @@
 	<li>Meals: <%= @package.meal %> </li>
 	<li>Maximum participant: <%= @package.head %> </li>
 	<li>Price (Private Tour): RM<%= @package.private_price %></li>
-	<li>
+
+<h3>Available Open Tour(s)</h3>
+
+	<% if @public_reservations.any? %>
+
+		<table class="table table-hover" >
+				<tr>
+					<th>No</th>
+					<th>Start date</th>
+					<th>End date</th>
+					<th>Price per pax</th>
+					<th>Participants</th>
+				</th>
+
+				<% count = 1 %>
+
+			<% @public_reservations.each do |p| %>
+
+				<tr class="clickableRow" data-link="<%= package_public_reservation_path(@package, p) %>" style:"cursor:pointer">
+					<td><%= count %></td>
+					<td><%= p.start_date %></td>
+					<td><%= p.end_date %></td>
+					<td>RM<%= p.public_price %></td>
+					<td>0/<%= @package.head %></td>
+				</tr>
+
+				<% count += 1 %>
+
+			<% end %>
+
+		</table>
+
+	<% end %>
+
+<br>
 
 <%= link_to "#{@user.username}'s packages", user_packages_path(@user.id) %>
+
+<script type="text/javascript">
+	  $("tr[data-link]").click(function() {
+  window.location = $(this).data("link")
+	});	
+
+</script>

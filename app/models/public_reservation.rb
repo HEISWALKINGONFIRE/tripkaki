@@ -4,4 +4,7 @@ class PublicReservation < ActiveRecord::Base
 
 	belongs_to :package
 
+  validates :start_date, :end_date, :public_price, presence: true
+
+
 end
