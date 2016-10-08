@@ -1,0 +1,25 @@
+<div id="filterrific_results">
+
+  <div>
+    <%= page_entries_info packages %>
+  </div>
+
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Country</th>
+      <th>State</th>
+    </tr>
+    <% packages.each do |package| %>
+        <tr>
+      <%= link_to package do %>
+          <td><%= package.title %></td>
+          <td><%= package.country_name %></td>
+          <td><%= package.state_name %></td>
+      <% end %>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate packages %>

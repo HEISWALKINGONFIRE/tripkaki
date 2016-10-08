@@ -16,8 +16,8 @@
 <% end %>
 
 	<li>Destination: <%= @package.destination %></li>
-	<li>Country: <%= @country.name %></li>
-	<li>State: <%= @state.name %> </li>
+	<li>Country: <%= @package.country_name %></li>
+	<li>State: <%= @package.state_name %> </li>
 	<li>Day: <%= @package.day %> </li>
 	<li>Description: <%= @package.description %> </li>
 	<li>Accommodation: <%= @package.accommodation %> </li>
@@ -61,11 +61,4 @@
 
 <br>
 
-<%= link_to "#{@user.username}'s packages", user_packages_path(@user.id) %>
-
-<script type="text/javascript">
-	  $("tr[data-link]").click(function() {
-  window.location = $(this).data("link")
-	});	
-
-</script>
+<%= link_to "#{@user.username}'s packages", @user %>
