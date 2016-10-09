@@ -1,8 +1,8 @@
-$(function() {
+$(document).ready(function() {
 
-	$("tr[data-link]").click(function() {
-  	window.location = $(this).data("link")
-	});	
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link")
+  }); 
 
   return $('select#package_country').change(function(event) {
 
