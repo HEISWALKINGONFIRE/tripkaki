@@ -1,1 +1,6 @@
 <h1>PrivateReservations#New</h1>
+
+
+<%= form_for @private_reservation, url: package_private_reservations_path do |f| %>
+	<%= render "form", f: f %>
+<% end %>

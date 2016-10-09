@@ -16,11 +16,15 @@ Rails.application.routes.draw do
   end
 
 
-  resources :packages, except: [:index]
+  resources :packages, except: [:index] do
+    resources :private_reservations, except: [:update, :destroy]
+  end
+
+  resources :private_reservations, only: [:update, :destroy]
 
   root to: "pages#index"
 
-  resources :private_reservations
+  
  
 
 end
