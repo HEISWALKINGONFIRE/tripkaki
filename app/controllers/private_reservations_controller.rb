@@ -24,6 +24,11 @@ class PrivateReservationsController < ApplicationController
 		@private_reservation = PrivateReservation.find(params[:id])
 	end
 
+	def destroy
+		PrivateReservation.destroy(params[:id])
+		redirect_to "/users/#{current_user.id}"
+	end
+
 	private
 		def private_reservation_params
 			params.require(:private_reservation).permit(:head_count, :start_date, :end_date)

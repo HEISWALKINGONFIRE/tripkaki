@@ -23,3 +23,4 @@ $(function() {
 		$(this).parent().submit();
 	});
 });
+
