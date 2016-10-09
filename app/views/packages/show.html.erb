@@ -6,21 +6,16 @@
 <h4>Title: <%= @package.title %> </h4>
 
 
-<% if @user.id == current_user.id%>
-
-	<%= link_to "Create a Public Tour!", new_package_public_reservation_path(@package), method: 'get' %>
-
-	<br>
+<% if @user == current_user %>
 
 	<%= link_to "Edit", edit_package_path(@package)%>
 	<%= link_to "Delete", package_path(@package), method: 'delete' %>
 
 <% end %>
 
-
 	<p>Destination: <%= @package.destination %></p>
-	<p>Country: <%= @country.name %></p>
-	<p>State: <%= @state.name %> </p>
+	<p>Country: <%= @package.country_name %></p>
+	<p>State: <%= @package.state_name %> </p>
 	<p>Day: <%= @package.day %> </p>
 	<p>Description: <%= @package.description %> </p>
 	<p>Accommodation: <%= @package.accommodation %> </p>
@@ -30,6 +25,12 @@
 	<p>Price (Private Tour): RM<%= @package.private_price %></p>
 
 
+<% if user_signed_in? && @user == current_user %>
+	<%= link_to "Create a Public Tour!" , "/packages/#{@package.id}/public_reservations/new", method: "get"  %>
+<% elsif user_signed_in? && @user != current_user %>
+	<p>Can't find suitable tour? <%= link_to "Create your own!", root_path %></p>
+<% end %> 
+	
 <h3>Available Open Tour(s)</h3>
 
 	<% if @public_reservations.any? %>
@@ -42,6 +43,7 @@
 					<th>Price per pax</th>
 					<th>Participants</th>
 					<th>Status</th>
+					<th></th>
 				</tr>
 
 				<% count = 1 %>
@@ -49,14 +51,25 @@
 			<% @public_reservations.each do |p| %>
 
 				<tr class="clickableRow" data-link="<%= package_public_reservation_path(@package, p) %>" style:"cursor:pointer">
+
 					<td><%= count %></td>
 					<td><%= p.start_date %></td>
 					<td><%= p.end_date %></td>
 					<td>RM<%= p.public_price %></td>
 					<td><%= p.count_participants %>/<%= @package.head %></td>
 					<td class='<%=p.status%>', id='<%=p.status%>'><%= p.status %></td>
-				</tr>
+					
+					<% if p.status == 'Open' && p.valid?(current_user.id) %>
 
+						<td id="join" style="font-weight: bold; font-size: 1.1em"><%= link_to 'Join', package_public_reservation_path(@package, p) %></td> 
+
+					<% else %>
+
+						<td></td>
+
+					<% end %>
+
+				</tr>
 				<% count += 1 %>
 
 			<% end %>
@@ -65,8 +78,5 @@
 
 	<% end %>
 
-<br>
-
-<%= link_to "#{@user.username}'s packages", user_packages_path(@user.id) %>
-
 </div>
+

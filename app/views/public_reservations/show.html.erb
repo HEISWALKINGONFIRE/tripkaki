@@ -10,11 +10,7 @@
 <p>Price: RM<%= @public_reservation.public_price %></p>
 <p>Participants: <%= @public_reservation.count_participants %>/<%=@package.head %></p>
 
-<% if @public_reservation.status == 'Closed' || @public_reservation.status == 'Full'%>
-
-	<%= link_to "Book now", users_public_reservations_new_path(:public_reservation_id => @public_reservation.id), method: 'get', class: "btn btn-default", :disabled => true %>
-
-<% else %>
+<% if @public_reservation.status == 'Open' && @public_reservation.valid?(current_user.id) %>
 
 	<%= link_to "Book now", users_public_reservations_new_path(:public_reservation_id => @public_reservation.id), method: 'get', class: "btn btn-primary" %>
 

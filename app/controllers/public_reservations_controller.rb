@@ -2,6 +2,7 @@ class PublicReservationsController < ApplicationController
   
   before_action :find_package, only: [:new, :create, :show, :edit, :update]
   before_action :find_public_reservation, only: [:show, :edit, :update]
+  before_action :authenticate_tour_guide!, only: [:new, :create, :edit, :update]
 
   def new
     @public_reservation = PublicReservation.new
@@ -12,7 +13,7 @@ class PublicReservationsController < ApplicationController
 
     if @public_reservation.save
 
-      redirect_to package_public_reservation_path(params[:package_id], @public_reservation.id)
+      redirect_to @package
     else
       render 'new'
     end
@@ -48,6 +49,10 @@ class PublicReservationsController < ApplicationController
 
   def reservation_params
     params.require(:public_reservation).permit(:public_price, :start_date, :end_date)
+  end
+
+  def authenticate_tour_guide!
+    redirect_to root_path unless current_user.role == "tour_guide"
   end
 
 end

@@ -10,12 +10,11 @@ Rails.application.routes.draw do
   }
 
 
-  resources :users, only: [:show] do 
-    resources :packages, only: [:index]
-  end
+  resources :users
 
+  resources :packages
 
-  resources :packages, except: [:index] do
+  resources :packages, only: [:show] do
     resources :public_reservations, except: [:destroy]
   end
 

@@ -22,7 +22,16 @@ class UsersPublicReservationsController < ApplicationController
 
 		elsif @user_public_reservation.errors.any?
 
+			if @user_public_reservation.errors.full_messages == 'This tour is closed.'
+
 			flash[:error] = 'This tour is closed'
+
+			else 
+
+			flash[:error] = 'An user can\'t apply for the same tour twice.'
+			
+			end
+
 			redirect_to package_path(@package)
 
 		else render 'new'

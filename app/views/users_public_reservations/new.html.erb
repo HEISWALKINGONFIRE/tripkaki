@@ -1,15 +1,19 @@
+<% if flash.any? %>
 
-<div class="alert alert-danger">
+	<div class="alert alert-danger">
 
-	<%= flash[:error] %>
+		<%= flash[:error] %>
 
-</div>
+	</div>
+
+<% end %>
 
 <h3>Payment</h3>
 
-<p>Tour: <%= @public_reservation.package.title %></p>
 
-<p>Amount: RM<%= @public_reservation.public_price %>
+	<p>Tour: <%= @public_reservation.package.title %></p>
+
+	<p>Amount: RM<%= @public_reservation.public_price %>
 
 <%= form_for @user_public_reservation do |f| %>
 	

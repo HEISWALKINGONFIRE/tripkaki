@@ -32,4 +32,8 @@ class PublicReservation < ActiveRecord::Base
 
   end
 
+  def valid?(id)
+    self.users_public_reservations.find_by('user_id =?',id).nil?
+  end
+
 end
