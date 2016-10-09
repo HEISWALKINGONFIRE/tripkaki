@@ -1,0 +1,19 @@
+
+<div class="alert alert-danger">
+
+	<%= flash[:error] %>
+
+</div>
+
+<h3>Payment</h3>
+
+<p>Tour: <%= @public_reservation.package.title %></p>
+
+<p>Amount: RM<%= @public_reservation.public_price %>
+
+<%= form_for @user_public_reservation do |f| %>
+	
+	<%= f.hidden_field :public_reservation_id, :value => @public_reservation.id %>
+	<%= f.submit "Payment" %>
+
+<% end %>

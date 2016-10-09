@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     resources :public_reservations, except: [:destroy]
   end
 
+  get '/users_public_reservations/new' => 'users_public_reservations#new'
+
+
+  resources :users_public_reservations, only: [:index, :create, :show]
+
   root to: "pages#index"
 
 

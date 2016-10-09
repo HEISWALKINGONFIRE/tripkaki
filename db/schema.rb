@@ -17,20 +17,21 @@ ActiveRecord::Schema.define(version: 20161007081011) do
   enable_extension "plpgsql"
 
   create_table "packages", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",                         null: false
     t.string   "destination"
-    t.string   "state"
-    t.string   "country"
-    t.integer  "day"
-    t.text     "description"
-    t.string   "accommodation"
+    t.string   "state",                         null: false
+    t.string   "country",                       null: false
+    t.integer  "day",                           null: false
+    t.text     "description",                   null: false
+    t.boolean  "accommodation",  default: true
     t.string   "transportation"
     t.string   "meal"
     t.integer  "head"
     t.integer  "private_price"
+    t.json     "images"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "packages", ["country"], name: "index_packages_on_country", using: :btree
@@ -62,11 +63,6 @@ ActiveRecord::Schema.define(version: 20161007081011) do
   end
 
   add_index "public_reservations", ["package_id"], name: "index_public_reservations_on_package_id", using: :btree
-
-  create_table "user_public_reservations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

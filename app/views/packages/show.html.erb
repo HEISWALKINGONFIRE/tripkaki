@@ -1,3 +1,5 @@
+<div class = 'container'>
+
 <h1>Packages#show</h1>
 <h4>Username: <%= @user.username %></h4>
 
@@ -15,16 +17,18 @@
 
 <% end %>
 
-	<li>Destination: <%= @package.destination %></li>
-	<li>Country: <%= @country.name %></li>
-	<li>State: <%= @state.name %> </li>
-	<li>Day: <%= @package.day %> </li>
-	<li>Description: <%= @package.description %> </li>
-	<li>Accommodation: <%= @package.accommodation %> </li>
-	<li>Transportation: <%= @package.transportation %> </li>
-	<li>Meals: <%= @package.meal %> </li>
-	<li>Maximum participant: <%= @package.head %> </li>
-	<li>Price (Private Tour): RM<%= @package.private_price %></li>
+
+	<p>Destination: <%= @package.destination %></p>
+	<p>Country: <%= @country.name %></p>
+	<p>State: <%= @state.name %> </p>
+	<p>Day: <%= @package.day %> </p>
+	<p>Description: <%= @package.description %> </p>
+	<p>Accommodation: <%= @package.accommodation %> </p>
+	<p>Transportation: <%= @package.transportation %> </p>
+	<p>Meals: <%= @package.meal %> </p>
+	<p>Maximum participant: <%= @package.head %> </p>
+	<p>Price (Private Tour): RM<%= @package.private_price %></p>
+
 
 <h3>Available Open Tour(s)</h3>
 
@@ -37,7 +41,8 @@
 					<th>End date</th>
 					<th>Price per pax</th>
 					<th>Participants</th>
-				</th>
+					<th>Status</th>
+				</tr>
 
 				<% count = 1 %>
 
@@ -48,7 +53,8 @@
 					<td><%= p.start_date %></td>
 					<td><%= p.end_date %></td>
 					<td>RM<%= p.public_price %></td>
-					<td>0/<%= @package.head %></td>
+					<td><%= p.count_participants %>/<%= @package.head %></td>
+					<td class='<%=p.status%>', id='<%=p.status%>'><%= p.status %></td>
 				</tr>
 
 				<% count += 1 %>
@@ -63,9 +69,4 @@
 
 <%= link_to "#{@user.username}'s packages", user_packages_path(@user.id) %>
 
-<script type="text/javascript">
-	  $("tr[data-link]").click(function() {
-  window.location = $(this).data("link")
-	});	
-
-</script>
+</div>
