@@ -7,6 +7,7 @@ class PackagesController < ApplicationController
         params[:filterrific],
         select_options: {
           sorted_by: Package.options_for_sorted_by,
+          tour_type: Package.options_for_tour_type
         }
       ) or return
       @packages = @filterrific.find.page(params[:page])

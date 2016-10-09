@@ -15,6 +15,10 @@
     <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
   </div>
   <div>
+    Tour type
+    <%= f.select(:tour_type, @filterrific.select_options[:tour_type]) %>
+  </div>
+  <div>
     <%= link_to(
       'Reset filters',
       reset_filterrific_url,
