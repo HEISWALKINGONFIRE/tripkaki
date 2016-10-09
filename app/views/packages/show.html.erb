@@ -4,7 +4,7 @@
 <h4>Title: <%= @package.title %> </h4>
 
 
-<% if @user.id == current_user.id%>
+<% if @user == current_user %>
 
 	<%= link_to "Create a Public Tour!", new_package_public_reservation_path(@package), method: 'get' %>
 
@@ -26,6 +26,12 @@
 	<li>Maximum participant: <%= @package.head %> </li>
 	<li>Price (Private Tour): RM<%= @package.private_price %></li>
 
+<% if user_signed_in? && @user == current_user %>
+	<%= link_to "Create new open tour" , "/packages/#{@package.id}/public_reservations/new", method: "get"  %>
+<% elsif user_signed_in? %>
+	<p>Can't find suitable tour? <%= link_to "Create your own!", root_path %></p>
+<% end %> 
+	
 <h3>Available Open Tour(s)</h3>
 
 	<% if @public_reservations.any? %>
@@ -42,15 +48,15 @@
 				<% count = 1 %>
 
 			<% @public_reservations.each do |p| %>
-
 				<tr class="clickableRow" data-link="<%= package_public_reservation_path(@package, p) %>" style:"cursor:pointer">
+				<%= link_to package_public_reservations_path(p.package.id, p.id) do  %>
 					<td><%= count %></td>
+				<% end %> 
 					<td><%= p.start_date %></td>
 					<td><%= p.end_date %></td>
 					<td>RM<%= p.public_price %></td>
 					<td>0/<%= @package.head %></td>
 				</tr>
-
 				<% count += 1 %>
 
 			<% end %>

@@ -63,11 +63,6 @@ ActiveRecord::Schema.define(version: 20161007081011) do
 
   add_index "public_reservations", ["package_id"], name: "index_public_reservations_on_package_id", using: :btree
 
-  create_table "user_public_reservations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "encrypted_password",     default: "", null: false

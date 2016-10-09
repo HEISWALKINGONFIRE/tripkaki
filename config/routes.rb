@@ -12,9 +12,9 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :packages, only: [:index]
+  resources :packages
 
-  resources :packages, except: [:index] do
+  resources :packages, only: [:show] do
     resources :public_reservations, except: [:destroy]
   end
 

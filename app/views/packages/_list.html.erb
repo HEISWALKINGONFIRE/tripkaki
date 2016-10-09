@@ -5,19 +5,21 @@
   </div>
 
   <table>
-    <tr>
-      <th>Title</th>
-      <th>Country</th>
-      <th>State</th>
-    </tr>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Country</th>
+        <th>State</th>
+      </tr>
+    </thead>
     <% packages.each do |package| %>
-        <tr>
-      <%= link_to package do %>
-          <td><%= package.title %></td>
-          <td><%= package.country_name %></td>
-          <td><%= package.state_name %></td>
-      <% end %>
-        </tr>
+          <tr>
+        
+            <td><%= link_to package.title, package  %> </td>
+        
+            <td><%= package.country_name %></td>
+            <td><%= package.state_name %></td>
+          </tr>
     <% end %>
   </table>
 </div>
