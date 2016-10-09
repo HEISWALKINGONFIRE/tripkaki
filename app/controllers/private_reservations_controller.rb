@@ -20,6 +20,9 @@ class PrivateReservationsController < ApplicationController
 		@private_reservation = PrivateReservation.find(params[:id])
 	end
 
+	def edit
+		@private_reservation = PrivateReservation.find(params[:id])
+	end
 
 	private
 		def private_reservation_params
