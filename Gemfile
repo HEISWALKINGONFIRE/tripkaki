@@ -18,6 +18,8 @@ gem "font-awesome-rails"
 gem "typedjs-rails", "~> 1.0.4"
 gem 'filterrific'
 gem 'will_paginate'
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
 
 group :development, :test do
   gem 'byebug'
