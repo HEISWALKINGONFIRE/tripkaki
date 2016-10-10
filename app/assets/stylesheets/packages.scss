@@ -2,6 +2,141 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// .form-group-row
+// {
+	
+// display: inline-block;
+// text-align: center;
+// background-color: #2196f3;
+// width: 600px;
+// height: 700px;
+// border-radius: 30px;
+// list-style: none;
+// color: black;
+
+
+
+// }
+
+// #title
+// {
+// 	width: 500px;
+// 	height: 35px;
+// 	padding: 6px 12px;
+// 	font-size: 14px;
+// 	text-align: center;
+// 	display: inline-block;
+// }
+
+// #destination
+// {
+// 	width: 500px;
+// 	height: 35px;
+// 	padding: 6px 12px;
+// 	font-size: 14px;
+// 	text-align: center;
+// 	display: inline-block;
+
+// }
+
+// #description
+// {
+// 	width: 500px;
+// 	height: 100px;
+// 	text-align: center;
+// 	display: inline-block;
+
+// }
+
+// #transportation
+// {
+// 	width: 500px;
+// 	height: 35px;
+// 	font-size: 14;
+// 	text-align: center;
+// 	display: inline-block;
+
+
+// }
+.packages_new_form
+{
+	// display: inline-block;
+	// text-align: center;
+	background-color: #2196f3;
+	width: 600px;
+	height: 900px;
+	border-radius: 30px; 
+	color: black;
+}
+
+#title
+{
+	width: 500px;
+	height: 35px;
+	padding: 6px 12px;
+	font-size: 14px;
+	text-align: center;
+	// display: inline-block;
+
+}
+
+#destination
+{
+	width: 500px;
+	height: 35px;
+	padding: 6px 12px;
+	font-size: 14px;
+	text-align: center;
+	// display: inline-block;
+}
+
+	#package_country
+	{
+		width: 500px;
+		height: 50px;
+		padding: 6px 12px;
+		font-size: 14px;
+
+	}
+
+	#package_state
+	{
+		width: 500px;
+		height: 50px;
+		padding: 6px 12px;
+		font-size: 14px;
+	}
+	// there are a few classes in here
+	#package_head 
+	{
+		width: 500px;
+		height: 50px;
+		padding: 6px 12px;
+		font-size: 14px;
+	}
+	#package_day
+	{
+		width: 500px;
+		height: 50px;
+		padding: 6px 12px;
+		font-size: 14px;
+
+	}
+#description
+{
+	width: 500px;
+	height: 50px;
+	padding: 6px 12px;
+	font-size: 14px;
+}
+
+#price
+{
+	width: 500px;
+	height: 35px;
+	padding: 6px 12px;
+	font-size: 14px;
+}
 
 
 tr.clickableRow { 

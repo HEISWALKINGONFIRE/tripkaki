@@ -1,49 +1,82 @@
-<%= form_for @package do |f| %>
 
-	<li><%= f.label :title %>
-		<%= f.text_field :title %> 
-	</li>
 
-	<li><%= f.label :destination %>
-		<%= f.text_field :destination %>
-	</li>
+<center>
+<div>
+<h1>Make your trip the way you wanted it to be.</h1>
+<h>-the tourist only knows best.</h>
+</div>
 
-	<div class="field">
-	  <%= f.label :country %><br />
-	  <%= f.country_select :country, priority: %w(MY SG), input_html: {id: "package_country"}, prompt: 'Please select a country' %>
+<div class="container">
+	<div class="packages_new_form">
+		<div class="form-group-row">
+			<%= form_for @package do |f| %>
+		<div class="form-group" >
+			<div><%= f.label :title %>
+				<%= f.text_field :title , class:"form-control", placeholder:"Title", id: "title" %> 
+			</div>
+		</div>
+
+		<div class="form-group">
+			 <div><%= f.label :destination  %><br>
+				  <%= f.text_field :destination , class:"form-control", placeholder:"e.g. KL tower", id:"destination"%>
+		 	 </div>
+		</div>
+
+		<div class="form-group">
+
+	  		<%= f.label :country %><BR>
+	  			<%= f.country_select :country, priority: %w(MY SG), input_html: {id: "package_country"}, prompt: 'Please select a country' %>
+	  	</div>
+	
+
+		<div class="form-group">
+	  	<%= f.label :state %> 
+	  	<%= render partial: 'subregion_select', locals: {parent_region: f.object.country}, class:"form-control state", id:"state" %>
+
+		</div>
+
+			<div> Duration of the trip <br> <%= f.select :day, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]),{:prompt => "Select number of days"} %> 
+			</div>
+
+			<div>
+			<%= f.label :accommodation %>
+			<%= f.select :head, options_for_select(["Yes","No"]), :prompt => "Select accommodation"%>
+			</div>
+
+			<div><%= f.label :transportation %> <br>
+				<%= f.select :head, options_for_select(["yes", "no"]), :prompt => "Select transportation" 
+				%>
+			</div>
+
+			<div><%= f.label :meal %><br>
+				<%= f.select :head, options_for_select(["yes","no"]), :prompt => "Select meal" %>
+			</div>
+
+			<div>Number of participants: <%= f.select :head, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]]),{:prompt => "-Select number of participants"} %> 
+			</div>
+
+			<div class="form-group">
+				<div> <%= f.label :private_price, "Price for a private tour" %>
+				<%= f.text_field :private_price, id:"price", placeholder:"$100 ~ $200"%>
+				</div>
+			</div>
+
+			<div>
+				<%= f.label :description %><br>
+				<%= f.text_area :description , class:"form-control", id:"description", placeholder:"Description" %> 		
+			</div>
+
+			<div><%= f.submit :submit %></div>
+		
+		</div>
 	</div>
-
-	<div class="field">
-  <%= f.label :state %><br />
-  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country} %>
-	</div>
-
-	<li> Duration of the trip: <%= f.select :day, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]),{:prompt => "-Select number of days"} %> 
-	</li>
-
-	<li><%= f.label :description %>
-		<%= f.text_area :description %> 		
-	</li>
-
-	<li><%= f.label :accommodation %>
-	<%= f.check_box :accommodation %>
-	</li>
-
-	<li><%= f.label :transportation %>
-		<%= f.text_field :transportation %>
-	</li>
-
-	<li><%= f.label :meal %>
-		<%= f.text_field :meal %>
-	</li>
-
-	<li>Number of participants: <%= f.select :head, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]]),{:prompt => "-Select number of participants"} %> 
-	</li>
-
-	<li><%= f.label :private_price, "Price for a private tour" %>
-		<%= f.text_field :private_price %>
-	</li>
-
-	<li><%= f.submit :submit %></li>
-
+</div>	
 <% end %>
+
+
+
+
+</center>
+
+
+:transportation, class:"form-control", id:"transportation", placeholder:"Transportation"
