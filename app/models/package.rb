@@ -20,14 +20,23 @@ class Package < ActiveRecord::Base
 	   raise(ArgumentError, "Invalid sort option: #{ sort.inspect }")
 	 end
 	}
-	scope :search_query, -> (query) {where('LOWER(title) LIKE ?', "#{query}%")}
+	scope :tour_type, -> (tour) {
+		case tour.to_s
+		when /private/
+			all
+		when /public/
+			joins(:public_reservations)
+		end
+	}
+	scope :search_query, -> (query) { where('LOWER(title) LIKE ?', "#{query}%") }
 	scope :price_range, ->(min, max) { where(price: min..max)}
 	
 	filterrific(
 	  default_filter_params: { sorted_by: 'created_at_desc' },
 	  available_filters: [
+	  	:tour_type,
 	    :sorted_by,
-	    :search_query,
+	    :search_query
 	  ]
 	)
 
@@ -39,6 +48,13 @@ class Package < ActiveRecord::Base
       ['Name (AZ)', 'name_asc'],
       ['Name (ZA)', 'name_desc']
      ]
+  end
+
+  def self.options_for_tour_type
+  	[
+  		['Private', 'private'],
+  		['Public', 'public']
+  	]
   end
 
   def country_name
