@@ -1,37 +1,51 @@
- <div class="form-group-row" >
+<center>
+<div>
+<h1>Make your trip the way you wanted it to be.</h1>
+<h>-the tourist only knows best.</h>
+</div>
+</center>
+<center>
+<div class="form-group-row">
 <%= form_for @package do |f| %>
+	 <div class="form-group" >
 
-	<li><%= f.label :title %>
-		<%= f.text_field :title , class:"form-control", placeholder:"Title" %> 
+	<!-- <li><%= f.label :title %> <br> -->
+	<h> </h>
+			<%= f.text_field :title , class:"form-control", placeholder:"Title", id: "title" %> 
 	</li>
+	</div>
 
-	<li><%= f.label :destination  %>
-		<%= f.text_field :destination , class:"form-control", placeholder:"Destination"%>
+
+	<div class="form-group">
+	<!-- <li><%= f.label :destination  %> -->
+		<%= f.text_field :destination , class:"form-control", placeholder:"Destination", id:"destination"%>
 	</li>
+	</div>
 
 	<div class="form-group">
 	  <%= f.label :country %><br />
-	  <%= f.country_select :country, priority: %w(MY SG), input_html: {id: "package_country"}, prompt: 'Please select a country' , class:"form-control" %>
+	  <%= f.country_select :country, priority: %w(MY SG), input_html: {id: "package_country"}, prompt: 'Please select a country' , class:"form-control" , id:"country"%>
 	</div>
 
 	<div class="form-group">
   <%= f.label :state %><br />
-  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country} , class:"form-control" %>
+  <%= render partial: 'subregion_select', locals: {parent_region: f.object.country} , class:"form-control", class:"state" %>
 	</div>
 
-	<li> Duration of the trip<br> <%= f.select :day, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]),{:prompt => "-Select number of days"} %> 
+	<li> Duration of the trip<br> <%= f.select :day, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]),{:prompt => "Select number of days"} %> 
 	</li>
 
-	<li><%= f.label :description %>
-		<%= f.text_area :description , class:"form-control" %> 		
+<!-- 	<li><%= f.label :description %> -->
+		<%= f.text_area :description , class:"form-control", id:"description", placeholder:"Description" %> 		
 	</li>
 
 	<li><%= f.label :accommodation %>
-	<%= f.check_box :accommodation %>
+	<%= f.check_box :accommodation , class:"form-check-input", id:"accommodation"%>
 	</li>
 
-	<li><%= f.label :transportation %>
-		<%= f.text_field :transportation %>
+	<li><%= f.label :transportation %> <br>
+		<%= f.text_field :transportation, class:"form-control", id:"transportation", placeholder:"Transportation"
+		%>
 	</li>
 
 	<li><%= f.label :meal %>
@@ -50,7 +64,6 @@
 	</li>
 
 	<li><%= f.submit :submit %></li>
-
+</div>
 <% end %>
 
-</div>

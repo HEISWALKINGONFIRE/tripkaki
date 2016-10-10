@@ -4,7 +4,55 @@
 
 .form-group-row
 {
+	
+display: inline-block;
+text-align: center;
+background-color: gray;
+width: 600px;
+height: 600px;
+border-radius: 36px;
+
+
+
+}
+
+#title
+{
+	width: 500px;
+	height: 35px;
+	padding: 6px 12px;
+	font-size: 14px;
 	text-align: center;
-	text-decoration: none;
-	list-style-type: none;
+	display: inline-block;
+}
+
+#destination
+{
+	width: 500px;
+	height: 35px;
+	padding: 6px 12px;
+	font-size: 14px;
+	text-align: center;
+	display: inline-block;
+
+}
+
+#description
+{
+	width: 500px;
+	height: 100px;
+	text-align: center;
+	display: inline-block;
+
+}
+
+#transportation
+{
+	width: 500px;
+	height: 35px;
+	font-size: 14;
+	text-align: center;
+	display: inline-block;
+
+
 }
