@@ -2,4 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-tr.clickableRow { cursor: pointer; }
+
+
+tr.clickableRow { 
+	cursor: pointer;
+}
+
+.clickableRow:hover {
+	background-color: red;
+}
+
+
+th {
+	text-align: center;
+}
+
+.Open {
+	color: green;
+	font-weight: bold;
+}
+
+.Closed {
+	color: red;
+	font-weight: bold;
+}
+
+.Full {
+	color: orange;
+	font-weight: bold;
+}
