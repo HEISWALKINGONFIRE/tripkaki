@@ -1,5 +1,5 @@
 class PackagesController < ApplicationController
-<<<<<<< HEAD
+
 	before_action :authenticate_tour_guide!, only: [:new, :create, :edit, :delete, :update]
 
 	def index
@@ -82,7 +82,7 @@ class PackagesController < ApplicationController
 		def authenticate_tour_guide!
 			redirect_to root_path unless current_user.role == "tour_guide"
 		end
-=======
+
   before_action :authenticate_tour_guide!, only: [:new, :create, :edit, :delete, :update]
 
   def index
@@ -169,6 +169,6 @@ class PackagesController < ApplicationController
   def authenticate_tour_guide!
     redirect_to root_path unless current_user.role == "tour_guide"
   end
->>>>>>> da32ed262012627a93850e83bd43a20779a9a667
+
 
 end
