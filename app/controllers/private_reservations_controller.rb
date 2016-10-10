@@ -5,13 +5,12 @@ class PrivateReservationsController < ApplicationController
 
 	def create
 		package = Package.find(params[:package_id])
-		@private_reservation = package.private_reservations.new(private_reservation_params)
-		@private_reservation.user_id = current_user.id
+		private_reservation = package.private_reservations.new(private_reservation_params)
+		private_reservation.user_id = current_user.id
 
-		if @private_reservation.save
-			redirect_to @private_reservation
+		if private_reservation.save
+			redirect_to "/private_reservations/#{private_reservation.id}"
 		else
-			@private_reservation = PrivateReservation.new
 			render :new
 		end
 	end
@@ -27,7 +26,7 @@ class PrivateReservationsController < ApplicationController
 	def update
 		private_reservation = PrivateReservation.find(params[:id])
 		if private_reservation.update(private_reservation_params)
-			redirect_to private_reservation
+			redirect_to "/private_reservations/#{private_reservation.id}"
 		else
 			render :edit
 		end
