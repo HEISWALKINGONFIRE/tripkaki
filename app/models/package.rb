@@ -3,6 +3,8 @@ class Package < ActiveRecord::Base
 	belongs_to :user
 	has_many :private_reservations
 	has_many :public_reservations
+	
+	mount_uploaders :images, ImageUploader
 
 	scope :sorted_by, -> (sort) {
 		direction = (sort =~ /desc$/) ? 'desc' : 'asc'
