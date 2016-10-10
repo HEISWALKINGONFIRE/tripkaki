@@ -25,9 +25,10 @@
 	<p>Price (Private Tour): RM<%= @package.private_price %></p>
 
 
-<% if user_signed_in? && @user == current_user %>
-	<%= link_to "Create a Public Tour!" , "/packages/#{@package.id}/public_reservations/new", method: "get"  %>
-<% elsif user_signed_in? && @user != current_user %>
+<% if user_signed_in? && @user != current_user %>
+	<%= link_to "Join a Public Tour!" , "/packages/#{@package.id}/public_reservations/new", method: "get" %><br/>
+	<%= link_to "Create a Private Tour!" , "/packages/#{@package.id}/private_reservations/new", method: "get" %>
+<% elsif user_signed_in? && @user == current_user %>
 	<p>Can't find suitable tour? <%= link_to "Create your own!", root_path %></p>
 <% end %> 
 	
