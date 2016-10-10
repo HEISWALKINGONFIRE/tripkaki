@@ -5,7 +5,7 @@
 <h2>Your Private Reservations</h2><br/>
 <p>
 	<% @user.private_reservations.each do |private_reservation| %>
-		<li><%= link_to private_reservation.package.title, package_private_reservation_path(private_reservation.package, private_reservation) %></li>
+		<li><%= link_to private_reservation.package.title, private_reservation %></li>
 
 	<% end %>
 </p>

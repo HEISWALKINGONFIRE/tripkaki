@@ -9,7 +9,7 @@ class PrivateReservationsController < ApplicationController
 		@private_reservation.user_id = current_user.id
 
 		if @private_reservation.save
-			redirect_to package_private_reservation_path(@private_reservation.package, @private_reservation)
+			redirect_to @private_reservation
 		else
 			@private_reservation = PrivateReservation.new
 			render :new
