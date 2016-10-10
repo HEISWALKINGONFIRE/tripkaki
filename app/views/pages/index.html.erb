@@ -5,12 +5,21 @@
 			<h1>CREATIVE HOLIDAY</h1>
 			<p>CREATE YOUR <span class="typed-cursor"></span><span class="element">KIND OF HOLIDAY.</span></p>
 		</div>
+		<%= form_for_filterrific @filterrific do |f| %>
 		<div class="input-group input-group-lg">
-			<input id= "searchbar" class="form-control" name="" placeholder="Where to...?"" type="text">
-				<span class="input-group-btn">
-					<button id="submit-btn" class="btn btn-danger" type="submit" title="Search">Search</button>	
-				</span>
+		  <div>
+		    <%= f.text_field(
+		      :search_query,
+		      class: 'filterrific-periodically-observed form-control',
+		      	id: "searchbar",
+		      	placeholder: "Where to...?"
+		    ) %>
+		  </div>
+			<span class="input-group-btn">
+				<button id="submit-btn" class="btn btn-danger" type="submit" title="Search">Search</button>	
+			</span>
 		</div>
+		<% end %>
 			
 		</div>
 	</div>
