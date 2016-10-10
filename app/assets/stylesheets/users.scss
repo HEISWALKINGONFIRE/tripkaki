@@ -28,8 +28,11 @@
 			&:hover {
 				border: 2px #2196f3 solid;
 			}
-			&:active { 
-				// border-style: outset;
+			&:active, &:focus { 
+				border:2px solid #ccc;
+				background:none;
+				outline:none;
+				padding:0;
 			}
 			i {
 				font-size: 45px;

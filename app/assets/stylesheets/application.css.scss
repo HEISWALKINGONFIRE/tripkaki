@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery-ui
  *= require_tree .
  *= require_self
  *= require font-awesome
@@ -62,8 +63,8 @@
 	}
 	.input-group{
 		padding-top: 30px;
-		padding-right :80px;
-		padding-left: 80px;
+		padding-right :200px;
+		padding-left: 200px;
 
 		#searchbar{
 			height: 60px;

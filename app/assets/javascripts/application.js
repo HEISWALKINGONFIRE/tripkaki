@@ -11,11 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-//= require bootstrap-sprockets
 //= require typed
+//= require filterrific/filterrific-jquery
 
 $(function() {
 	$(".index_page").css("height", $(window).height()+"px");
@@ -23,11 +25,9 @@ $(function() {
 	$(".role-selection input").on("click", function() {
 		$(this).parent().submit();
 	});
-});
 
-  $(function(){
-      $(".element").typed({
-          strings: ["KIND OF HOLIDAY.", "SWEET MEMORIES.", "AWESOME TRIPS.", "SPECIAL GETAWAY." ],
-          typeSpeed: 55
-      });
+  $(".element").typed({
+      strings: ["KIND OF HOLIDAY.", "SWEET MEMORIES.", "AWESOME TRIPS.", "SPECIAL GETAWAY." ],
+      typeSpeed: 55
   });
+});
