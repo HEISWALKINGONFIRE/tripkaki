@@ -4,6 +4,16 @@ class Package < ActiveRecord::Base
 	has_many :private_reservations
 	has_many :public_reservations
 
+	scope :tour_type, -> (tour) {
+		case tour.to_s
+		when /private/
+			@private = true
+			all
+		when /public/
+			@private = false
+			joins(:public_reservations).select("packages.*, public_reservations.id as public_id, public_reservations.start_date, public_reservations.end_date, public_reservations.public_price")
+		end
+	}
 	scope :sorted_by, -> (sort) {
 		direction = (sort =~ /desc$/) ? 'desc' : 'asc'
 	 case sort.to_s
@@ -17,28 +27,18 @@ class Package < ActiveRecord::Base
 	   # Simple sort on the name colums
 	   order("LOWER(packages.title) #{ direction }")
 	 when /^price_/
-	 		respond_to? :start_date ? order("public_reservations.public_price #{direction}") : order("packages.private_price #{direction}")
+		 	if @private.nil? || !@private
+	 			joins(:public_reservations).select("packages.*, public_reservations.id as public_id, public_reservations.start_date, public_reservations.end_date, public_reservations.public_price").order("public_reservations.public_price #{direction}") 
+	 		else
+	 			order("packages.private_price #{direction}")
+	 		end
 	 else
 	   raise(ArgumentError, "Invalid sort option: #{ sort.inspect }")
 	 end
 	}
-	scope :tour_type, -> (tour) {
-		case tour.to_s
-		when /private/
-			all
-		when /public/
-			joins(:public_reservations).select("packages.*, public_reservations.id as public_id, public_reservations.start_date, public_reservations.end_date, public_reservations.public_price")
-		end
-	}
 	scope :search_query, -> (query) { 
-		case query.to_s
-		when /kuala lumpur/
-			where(state: "14")
-		when /penang/
-			where(state: "07")
-		else
-			where(state: "99")
-		end
+		state = Carmen::Country.named("malaysia", fuzzy: true).subregions.named(query, fuzzy: true).code
+		where(state: "#{state}")
 	 }
 	 scope :date_range, -> (range) {
 	 	# byebug
