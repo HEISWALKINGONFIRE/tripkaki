@@ -13,16 +13,20 @@ footer{padding:44px 0 0 0;}
 }
 
 footer {
-    color:#777;
-    background:#222;
-    border-top:2px solid #444;
-	}
-	footer h1,footer h2,footer h3,footer h4{
-	    color:#ddd;
-	    font-weight:300;
+  color:#777;
+  background:  linear-gradient(#262626, #000000); /* Standard syntax (must be last) */;
+  border-top:2px solid #444;
+  position: absolute !important;
+	z-index: 3;
+	width: 100% !important; 
+	
+	h1,h2,h3,h4 {
+    color:#ddd;
+    font-weight:300;
 	}
 	#footerRights {
-	    background-color:#333;
-	    color:#999;
-	    border-top:1px solid #1b1b1b;
+    background-color:#333;
+    color:#999;
+    border-top:1px solid #1b1b1b;
+	}
 }
