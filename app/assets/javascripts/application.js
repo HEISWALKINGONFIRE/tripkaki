@@ -18,8 +18,17 @@
 //= require_tree .
 //= require typed
 //= require filterrific/filterrific-jquery
+//= require moment
+//= require daterangepicker
 
 $(function() {
+  if ($("#filterrific_tour_type option:selected").val() == "private") {
+      $("#filterrific_date_range").parent().hide();
+      
+    } else {
+
+      $("#filterrific_date_range").show();
+    }
 	$(".index_page").css("height", $(window).height()+"px");
 	$(".bg2").css("height", $(window).height()+"px");
 	$(".role-selection input").on("click", function() {
@@ -30,5 +39,15 @@ $(function() {
       strings: ["KIND OF HOLIDAY.", "SWEET MEMORIES.", "AWESOME TRIPS.", "SPECIAL GETAWAY." ],
       typeSpeed: 55
   });
+  $('input[name="filterrific[date_range]"]').daterangepicker();
+  $("#filterrific_tour_type").change(function() {
+    if ($("#filterrific_tour_type option:selected").val() == "private") {
+      $("#filterrific_date_range").parent().hide();
+      
+    } else {
+
+      $("#filterrific_date_range").parent().show();
+    }
+  })
 });
 

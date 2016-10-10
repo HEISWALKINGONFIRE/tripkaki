@@ -15,7 +15,9 @@ class Package < ActiveRecord::Base
 	   order("packages.created_at #{ direction }")
 	 when /^name_/
 	   # Simple sort on the name colums
-	   order("LOWER(packages.title) #{ direction }, LOWER(packages.title) #{ direction }")
+	   order("LOWER(packages.title) #{ direction }")
+	 when /^price_/
+	 		respond_to? :start_date ? order("public_reservations.public_price #{direction}") : order("packages.private_price #{direction}")
 	 else
 	   raise(ArgumentError, "Invalid sort option: #{ sort.inspect }")
 	 end
@@ -25,10 +27,28 @@ class Package < ActiveRecord::Base
 		when /private/
 			all
 		when /public/
-			joins(:public_reservations)
+			joins(:public_reservations).select("packages.*, public_reservations.id as public_id, public_reservations.start_date, public_reservations.end_date, public_reservations.public_price")
 		end
 	}
-	scope :search_query, -> (query) { where('LOWER(title) LIKE ?', "#{query}%") }
+	scope :search_query, -> (query) { 
+		case query.to_s
+		when /kuala lumpur/
+			where(state: "14")
+		when /penang/
+			where(state: "07")
+		else
+			where(state: "99")
+		end
+	 }
+	 scope :date_range, -> (range) {
+	 	# byebug
+	 	all if range == nil
+	 	arr = range.split(" - ")
+	 	sdate =  Date.strptime(arr[0], '%m/%d/%Y')
+	 	edate =  Date.strptime(arr[1], '%m/%d/%Y')
+
+	 	where('start_date <= ? AND end_date >= ?', edate, sdate)
+	 }
 	scope :price_range, ->(min, max) { where(price: min..max)}
 	
 	filterrific(
@@ -36,7 +56,8 @@ class Package < ActiveRecord::Base
 	  available_filters: [
 	  	:tour_type,
 	    :sorted_by,
-	    :search_query
+	    :search_query,
+	    :date_range
 	  ]
 	)
 
@@ -46,7 +67,10 @@ class Package < ActiveRecord::Base
     [
     	['Created at', 'created_at_asc'],
       ['Name (AZ)', 'name_asc'],
-      ['Name (ZA)', 'name_desc']
+      ['Name (ZA)', 'name_desc'],
+      ['Price (Low to High)', 'price_asc'],
+      ['Price (High to Low)', 'price_desc']
+
      ]
   end
 
@@ -56,6 +80,7 @@ class Package < ActiveRecord::Base
   		['Public', 'public']
   	]
   end
+
 
   def country_name
   	Carmen::Country.coded(self.country).name

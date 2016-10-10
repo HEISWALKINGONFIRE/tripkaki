@@ -19,6 +19,10 @@
     <%= f.select(:tour_type, @filterrific.select_options[:tour_type]) %>
   </div>
   <div>
+    Start Date
+    <%= f.text_field :date_range, style:  'display: none' %>
+  </div>
+  <div>
     <%= link_to(
       'Reset filters',
       reset_filterrific_url,
