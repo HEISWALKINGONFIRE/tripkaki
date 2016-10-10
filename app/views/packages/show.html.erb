@@ -1,82 +1,83 @@
 <div class = 'container'>
+	<div class="show-package">
 
-<h1>Packages#show</h1>
-<h4>Username: <%= @user.username %></h4>
+		<h1>Packages#show</h1>
+		<h4>Username: <%= @user.username %></h4>
 
-<h4>Title: <%= @package.title %> </h4>
-
-
-<% if @user == current_user %>
-
-	<%= link_to "Edit", edit_package_path(@package)%>
-	<%= link_to "Delete", package_path(@package), method: 'delete' %>
-
-<% end %>
-
-	<p>Destination: <%= @package.destination %></p>
-	<p>Country: <%= @package.country_name %></p>
-	<p>State: <%= @package.state_name %> </p>
-	<p>Day: <%= @package.day %> </p>
-	<p>Description: <%= @package.description %> </p>
-	<p>Accommodation: <%= @package.accommodation %> </p>
-	<p>Transportation: <%= @package.transportation %> </p>
-	<p>Meals: <%= @package.meal %> </p>
-	<p>Maximum participant: <%= @package.head %> </p>
-	<p>Price (Private Tour): RM<%= @package.private_price %></p>
+		<h4>Title: <%= @package.title %> </h4>
 
 
-<% if user_signed_in? && @user == current_user %>
-	<%= link_to "Create a Public Tour!" , "/packages/#{@package.id}/public_reservations/new", method: "get"  %>
-<% elsif user_signed_in? && @user != current_user %>
-	<p>Can't find suitable tour? <%= link_to "Create your own!", root_path %></p>
-<% end %> 
-	
-<h3>Available Open Tour(s)</h3>
+		<% if @user == current_user %>
 
-	<% if @public_reservations.any? %>
+			<%= link_to "Edit", edit_package_path(@package)%>
+			<%= link_to "Delete", package_path(@package), method: 'delete' %>
 
-		<table class="table table-hover" >
-				<tr>
-					<th>No</th>
-					<th>Start date</th>
-					<th>End date</th>
-					<th>Price per pax</th>
-					<th>Participants</th>
-					<th>Status</th>
-					<th></th>
-				</tr>
+		<% end %>
 
-				<% count = 1 %>
+			<p>Destination: <%= @package.destination %></p>
+			<p>Country: <%= @package.country_name %></p>
+			<p>State: <%= @package.state_name %> </p>
+			<p>Day: <%= @package.day %> </p>
+			<p>Description: <%= @package.description %> </p>
+			<p>Accommodation: <%= @package.accommodation %> </p>
+			<p>Transportation: <%= @package.transportation %> </p>
+			<p>Meals: <%= @package.meal %> </p>
+			<p>Maximum participant: <%= @package.head %> </p>
+			<p>Price (Private Tour): RM<%= @package.private_price %></p>
 
-			<% @public_reservations.each do |p| %>
 
-				<tr class="clickableRow" data-link="<%= package_public_reservation_path(@package, p) %>" style:"cursor:pointer">
+		<% if user_signed_in? && @user != current_user %>
+			<%= link_to "Join a Public Tour!" , "/packages/#{@package.id}/public_reservations/new", method: "get" %><br/>
+			<%= link_to "Create a Private Tour!" , "/packages/#{@package.id}/private_reservations/new", method: "get" %>
+		<% elsif user_signed_in? && @user == current_user %>
+			<p>Can't find suitable tour? <%= link_to "Create your own!", root_path %></p>
+		<% end %> 
+		
+		<div class="available-tour">	
+		<h3>Available Open Tour(s)</h3>
 
-					<td><%= count %></td>
-					<td><%= p.start_date %></td>
-					<td><%= p.end_date %></td>
-					<td>RM<%= p.public_price %></td>
-					<td><%= p.count_participants %>/<%= @package.head %></td>
-					<td class='<%=p.status%>', id='<%=p.status%>'><%= p.status %></td>
-					
-					<% if p.status == 'Open' && p.valid?(current_user.id) %>
+			<% if @public_reservations.any? %>
 
-						<td id="join" style="font-weight: bold; font-size: 1.1em"><%= link_to 'Join', package_public_reservation_path(@package, p) %></td> 
+				<table class="table table-hover" >
+						<tr>
+							<th>No</th>
+							<th>Start date</th>
+							<th>End date</th>
+							<th>Price per pax</th>
+							<th>Participants</th>
+							<th>Status</th>
+							<th></th>
+						</tr>
 
-					<% else %>
+						<% count = 1 %>
 
-						<td></td>
+					<% @public_reservations.each do |p| %>
 
-					<% end %>
+						<tr class="clickableRow" data-link="<%= package_public_reservation_path(@package, p) %>" style:"cursor:pointer">
 
-				</tr>
-				<% count += 1 %>
+							<td><%= count %></td>
+							<td><%= p.start_date %></td>
+							<td><%= p.end_date %></td>
+							<td>RM<%= p.public_price %></td>
+							<td><%= p.count_participants %>/<%= @package.head %></td>
+							<td class='<%=p.status%>', id='<%=p.status%>'><%= p.status %></td>
+							
+							<% if p.status == 'Open' && p.valid?(current_user.id) %>
 
-			<% end %>
+								<td id="join" style="font-weight: bold; font-size: 1.1em"><%= link_to 'Join', package_public_reservation_path(@package, p) %></td> 
 
-		</table>
+							<% else %>
 
-	<% end %>
+								<td></td>
 
+							<% end %>
+
+						</tr>
+						<% count += 1 %>
+				<% end %>
+			</table>
+		<% end %>
+		</div>
+	</div>
 </div>
 

@@ -1,4 +1,5 @@
 class PackagesController < ApplicationController
+<<<<<<< HEAD
   before_action :authenticate_tour_guide!, only: [:new, :create, :edit, :delete, :update]
 
   def index
