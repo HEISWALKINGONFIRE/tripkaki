@@ -18,6 +18,9 @@ gem "font-awesome-rails"
 gem "typedjs-rails", "~> 1.0.4"
 gem 'filterrific'
 gem 'will_paginate'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+
 
 group :development, :test do
   gem 'byebug'
