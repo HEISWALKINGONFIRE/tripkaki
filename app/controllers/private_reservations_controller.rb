@@ -24,6 +24,16 @@ class PrivateReservationsController < ApplicationController
 		@private_reservation = PrivateReservation.find(params[:id])
 	end
 
+	def update
+		private_reservation = PrivateReservation.find(params[:id])
+		if private_reservation.update(private_reservation_params)
+			redirect_to private_reservation
+		else
+			render :edit
+		end
+
+	end
+
 	def destroy
 		PrivateReservation.destroy(params[:id])
 		redirect_to "/users/#{current_user.id}"
