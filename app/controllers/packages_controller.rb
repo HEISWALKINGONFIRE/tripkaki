@@ -1,8 +1,20 @@
 class PackagesController < ApplicationController
+  before_action :authenticate_tour_guide!, only: [:new, :create, :edit, :delete, :update]
 
   def index
-    @user = User.find(params[:user_id])
-    @packages = @user.packages
+    @filterrific = initialize_filterrific(
+        Package,
+        params[:filterrific],
+        select_options: {
+          sorted_by: Package.options_for_sorted_by,
+        }
+      ) or return
+      @packages = @filterrific.find.page(params[:page])
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
   end
 
   def new
@@ -23,18 +35,15 @@ class PackagesController < ApplicationController
 
   end
 
-  def edit
-    @package = Package.find(params[:id])
-  end
-
   def show
     @package = Package.find(params[:id])
     @user = @package.user
+    @public_reservations = @package.public_reservations.order(:start_date)
 
-    @country = Carmen::Country.coded(@package.country)
+  end
 
-    @subregions = @country.subregions
-    @state = @subregions.coded(@package.state)
+  def edit
+    @package = Package.find(params[:id])
   end
 
   def update
@@ -66,6 +75,10 @@ class PackagesController < ApplicationController
 
   def package_params
     params.require(:package).permit(:title, :destination, :state, :country, :day, :description, :accommodation, :transportation, :meal, :head, :public_price, :private_price, {images: []})
+  end
+
+  def authenticate_tour_guide!
+    redirect_to root_path unless current_user.role == "tour_guide"
   end
 
 end

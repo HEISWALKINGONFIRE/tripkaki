@@ -14,19 +14,25 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        </ul>
+      <% if user_signed_in? && current_user.role == "tour_guide" %>
+          <li><%= link_to "Create a new package", new_package_path, method: "get", class:"new_package-btn" %></li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li><%= link_to "Search Package" , packages_path, method: "get", class:"search_package-btn"  %></li>
+        <% end %> 
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         
         <% if user_signed_in? %>
-          <li><%= link_to "Profile", current_user %></li>
+          <li><%= link_to "Profile", current_user, class:"profile-btn" %></li>
           <li>
-          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete, class:"logout-btn") %>        
           </li>
         <% else %>
-          <li><%= link_to "Sign Up" , new_user_registration_path, method: "get" %></li>
           <li>
-          <%= link_to('Login', new_user_session_path)  %>  
+          <%= link_to('Login', new_user_session_path, class:"login-btn")  %>  
          </li>
+          <li><%= link_to "Sign Up" , new_user_registration_path, method: "get", class:"signup-btn" %></li>
        <% end %> 
         <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>

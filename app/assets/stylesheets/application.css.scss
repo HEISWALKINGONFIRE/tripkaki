@@ -10,8 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require jquery-ui
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
  
 @import "bootstrap-sprockets";
@@ -19,8 +21,7 @@
 /*text*/
 
 /*background image*/
-.index_page
-{
+.index_page {
 	background-image: url("kuala-lumpur-city-view-HD.jpg");
 	width: 100%;
 	background-repeat: no-repeat;
@@ -38,33 +39,34 @@
 			margin: 0;
 		}
 		h1{
-			font-size: 45px;
+			font-size: 35px;
 			font-weight: bold;
 			color: black;
 		}
 		@media screen and (max-width: 1000px){
 			h1 {
-				font-size: 20px;
+				font-size: 15px;
 			}
 		}
-		p{
-			font-size: 65px;
+		p {
+			font-size: 55px;
 			padding-top: 5px;
 			color: white;
 			font-weight: bold;
 		}
 		@media screen and (max-width: 1000px){
 			p {
-				font-size: 45px;
+				font-size: 35px;
 			}
 		}
 	}
 	.input-group{
 		padding-top: 30px;
+		padding-right :15%;
+		padding-left: 15%;
 
 		#searchbar{
 			height: 60px;
-			padding-top: 20px;
 			border-top-left-radius: 2em;
 			border-bottom-left-radius: 2em;	
 		}
@@ -107,6 +109,11 @@ body {
 			height: auto;
 		}
 	}
+	.nav {
+		font-size: 14px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
 }
 
 .navbar-transparent {
@@ -114,4 +121,48 @@ body {
 	position: absolute;
 	z-index: 3;
 	width: 100%;
+}
+
+.typed-cursor {
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+.logout-btn, .signup-btn {
+	border: 3px solid white;
+	border-radius: 3em;
+	margin-top: 10px;
+	padding-right:25px !important;
+	padding-left: 25px !important;
+
+	&:hover {
+		background: white !important;
+		color: #ccc !important;
+	}
+
+}
+
+.search_package-btn, .new_package-btn, .profile-btn, .login-btn {
+	margin-top: 10px;
+
+	&:hover {
+		color: #ccc !important;
+	}
 }

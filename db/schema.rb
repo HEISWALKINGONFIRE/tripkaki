@@ -11,28 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007050729) do
+ActiveRecord::Schema.define(version: 20161007081011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "packages", force: :cascade do |t|
-    t.string   "title",                         null: false
+    t.string   "title"
     t.string   "destination"
-    t.string   "state",                         null: false
-    t.string   "country",                       null: false
-    t.integer  "day",                           null: false
-    t.text     "description",                   null: false
-    t.boolean  "accommodation",  default: true
+    t.string   "state"
+    t.string   "country"
+    t.integer  "day"
+    t.text     "description"
+    t.string   "accommodation"
     t.string   "transportation"
     t.string   "meal"
     t.integer  "head"
-    t.integer  "public_price"
     t.integer  "private_price"
-    t.json     "images"
     t.integer  "user_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "packages", ["country"], name: "index_packages_on_country", using: :btree
@@ -58,8 +56,9 @@ ActiveRecord::Schema.define(version: 20161007050729) do
     t.integer  "package_id"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "public_price"
   end
 
   add_index "public_reservations", ["package_id"], name: "index_public_reservations_on_package_id", using: :btree
