@@ -122,6 +122,27 @@
 		font-size: 14px;
 
 	}
+	#package_accommodation
+	{
+		width: 500px;
+		height: 50px;
+		padding: 6px 12px;
+		font-size: 14px;
+	}
+	#package_transportation
+	{
+		width: 500px;
+		height: 50px;
+		padding: 6px 12px;
+		font-size: 14px;
+	}
+	#package_meal
+	{
+		width: 500px;
+		height: 50px;
+		padding: 6px 12px;
+		font-size: 14px;
+	}
 #description
 {
 	width: 500px;
@@ -138,6 +159,12 @@
 	font-size: 14px;
 }
 
+#submit
+{
+	width: 100px;
+	height: 30px;
+	border-radius: 30px;
+}
 
 tr.clickableRow { 
 	cursor: pointer;

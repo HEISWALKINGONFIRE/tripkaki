@@ -35,21 +35,21 @@
 
 		</div>
 
-			<div> Duration of the trip <br> <%= f.select :day, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]),{:prompt => "Select number of days"} %> 
+			<div class="form-group"> Duration of the trip <br> <%= f.select :day, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6]]),{:prompt => "Select number of days"} %> 
 			</div>
 
 			<div>
 			<%= f.label :accommodation %>
-			<%= f.select :head, options_for_select(["Yes","No"]), :prompt => "Select accommodation"%>
+			<%= f.select :accommodation, options_for_select([ ["Yes", true], ["No", false] ]), :prompt => "Select accommodation"%>
 			</div>
 
 			<div><%= f.label :transportation %> <br>
-				<%= f.select :head, options_for_select(["yes", "no"]), :prompt => "Select transportation" 
+				<%= f.select :transportation, options_for_select(["Yes","No"]), :prompt => "Select transportation" 
 				%>
 			</div>
 
 			<div><%= f.label :meal %><br>
-				<%= f.select :head, options_for_select(["yes","no"]), :prompt => "Select meal" %>
+				<%= f.select :meal, options_for_select(["Yes","No"]), :prompt => "Select meal" %>
 			</div>
 
 			<div>Number of participants: <%= f.select :head, options_for_select([['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]]),{:prompt => "-Select number of participants"} %> 
@@ -65,8 +65,8 @@
 				<%= f.label :description %><br>
 				<%= f.text_area :description , class:"form-control", id:"description", placeholder:"Description" %> 		
 			</div>
-
-			<div><%= f.submit :submit %></div>
+			<br>
+			<div><%= f.submit :submit, id:"submit" %></div>
 		
 		</div>
 	</div>

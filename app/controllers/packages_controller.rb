@@ -48,6 +48,7 @@ class PackagesController < ApplicationController
 	end
 
 	def update
+		
 		@package = Package.find(params[:id])
 
 		if @package.update(package_params)
