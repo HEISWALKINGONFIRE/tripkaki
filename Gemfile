@@ -18,9 +18,11 @@ gem "font-awesome-rails"
 gem "typedjs-rails", "~> 1.0.4"
 gem 'filterrific'
 gem 'will_paginate'
+gem 'braintree'
 
 group :development, :test do
   gem 'byebug'
+  gem 'figaro'
 end
 
 group :development do

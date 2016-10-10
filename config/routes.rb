@@ -23,8 +23,11 @@ Rails.application.routes.draw do
 
   resources :users_public_reservations, only: [:index, :create, :show]
 
-  root to: "pages#index"
+  post 'braintree/check_out'
 
+  resources :braintree, only: [:new]
+
+  root to: "pages#index"
 
  
 

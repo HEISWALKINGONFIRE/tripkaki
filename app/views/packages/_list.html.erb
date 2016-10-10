@@ -15,7 +15,7 @@
     <% packages.each do |package| %>
           <tr>
         
-            <td><%= link_to package.title, package  %> </td>
+            <td><%= link_to package.title, package, method: "get"  %> </td>
         
             <td><%= package.country_name %></td>
             <td><%= package.state_name %></td>

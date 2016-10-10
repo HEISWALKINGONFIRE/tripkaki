@@ -5,37 +5,45 @@ class UsersPublicReservationsController < ApplicationController
 	end
 
 	def new
-		@user_public_reservation = UsersPublicReservation.new
+		# @user_public_reservation = UsersPublicReservation.new
 		@public_reservation = PublicReservation.find(params[:public_reservation_id])
 		@package = @public_reservation.package
 
 	end
 
 	def create
-		@package = PublicReservation.find(params[:users_public_reservation][:public_reservation_id]).package
-		@user_public_reservation = current_user.users_public_reservations.new(reservation_params)
 
-		if @user_public_reservation.save
+		@public_reservation = PublicReservation.find(params[:checkout_form][:public_reservation_id])
+
+		@package = @public_reservation.package
+
+		amount = params[:checkout_form][:public_price]
+		nonce_from_the_client = params[:checkout_form][:payment_method_nonce]
+
+		render action: :new and return unless nonce_from_the_client
+
+		@result = Braintree::Transaction.sale(
+				:amount => amount,
+				:payment_method_nonce => nonce_from_the_client,
+				:options => {
+						:submit_for_settlement => true
+					}
+			)
+		
+		if @result.success? 
+			transaction = @result.transaction
+
+			@user_public_reservation = current_user.users_public_reservations.create(reservation_params)
+
+			flash[:success] = 'Your payment has been successfully processed. Enjoy your trip!'
 
 			redirect_to @user_public_reservation
 
+		else 
 
-		elsif @user_public_reservation.errors.any?
+			flash[:alert] = "Something went wrong while processing your transaction. Please try again!"
+			render :new
 
-			if @user_public_reservation.errors.full_messages == 'This tour is closed.'
-
-			flash[:error] = 'This tour is closed'
-
-			else 
-
-			flash[:error] = 'An user can\'t apply for the same tour twice.'
-			
-			end
-
-			redirect_to package_path(@package)
-
-		else render 'new'
-		
 		end
 
 	end
@@ -49,7 +57,7 @@ class UsersPublicReservationsController < ApplicationController
 	private
 
 	def reservation_params
-		params.require(:users_public_reservation).permit(:public_reservation_id)
+		params.require(:checkout_form).permit(:public_reservation_id)
 	end
 
 end
