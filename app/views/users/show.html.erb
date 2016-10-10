@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Welcome back, <%= @user.first_name + " " + @user.last_name %></h1>
 
 <% if @packages.present? %>
@@ -7,12 +8,10 @@
 <% end %>
 
 <h2>Your Public Reservations</h2><br/>
-
-<h2>Your Private Reservations</h2><br/>
 <p>
 	<% @user.private_reservations.each do |private_reservation| %>
 		<li><%= link_to private_reservation.package.title, private_reservation %></li>
 
 	<% end %>
 </p>
-
+</div>
