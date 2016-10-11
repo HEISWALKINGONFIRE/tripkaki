@@ -1,11 +1,13 @@
-<div class="bg2"></div>
+<div class="bg1"></div>
+<!-- <div class="bg2"></div> -->
+<div class="bg3"></div>
 <div class="index_page">
 	<div class="container">
 		<div class="text">
 			<h1>CREATIVE HOLIDAY</h1>
 			<p>CREATE YOUR <span class="typed-cursor"></span><span class="element">KIND OF HOLIDAY.</span></p>
 		</div>
-		<%= form_tag({ controller: "packages", action: "index" }, id: "filterrific_filter", class: "new_filterrific") do %>
+		<%= form_tag({ controller: "packages", action: "index" }, method: :get, id: "filterrific_filter", class: "new_filterrific") do %>
 		<div class="input-group input-group-lg">
 			<%= text_field_tag('filterrific[search_query]', "",  class: 'filterrific-periodically-observed form-control',id: "searchbar", placeholder: "Where to...?", autocomplete: "off"  ) %>
 				<span class="input-group-btn">

@@ -3,6 +3,8 @@ class Package < ActiveRecord::Base
 	belongs_to :user
 	has_many :private_reservations
 	has_many :public_reservations
+	
+	mount_uploaders :images, ImageUploader
 
 	scope :tour_type, -> (tour) {
 		case tour.to_s
@@ -15,6 +17,8 @@ class Package < ActiveRecord::Base
 		end
 	}
 	scope :sorted_by, -> (sort) {
+
+		joins(:public_reservations).select("packages.*, public_reservations.id as public_id, public_reservations.start_date, public_reservations.end_date, public_reservations.public_price") if @private.nil? || !@private
 		direction = (sort =~ /desc$/) ? 'desc' : 'asc'
 	 case sort.to_s
 	 when /^created_at_/
@@ -27,8 +31,8 @@ class Package < ActiveRecord::Base
 	   # Simple sort on the name colums
 	   order("LOWER(packages.title) #{ direction }")
 	 when /^price_/
-		 	if @private.nil? || !@private
-	 			joins(:public_reservations).select("packages.*, public_reservations.id as public_id, public_reservations.start_date, public_reservations.end_date, public_reservations.public_price").order("public_reservations.public_price #{direction}") 
+	 		if @private.nil? || !@private
+		 		order("public_reservations.public_price #{direction}") 
 	 		else
 	 			order("packages.private_price #{direction}")
 	 		end
@@ -50,6 +54,7 @@ class Package < ActiveRecord::Base
 		where('start_date <= ? AND end_date >= ?', edate, sdate)
 	}
 	scope :price_range, ->(range) { 
+		joins(:public_reservations).select("packages.*, public_reservations.id as public_id, public_reservations.start_date, public_reservations.end_date, public_reservations.public_price") if @private.nil? || !@private
 		arr = range.to_s.split("-")
 		min = arr[0].to_i
 		max = arr[1].to_i

@@ -8,7 +8,7 @@ class CreatePackages < ActiveRecord::Migration
       t.string :country, null: false
       t.integer :day, null:false
       t.text :description, null:false
-      t.boolean :accommodation, default: true
+      t.string :accommodation
       t.string :transportation
       t.string :meal
       t.integer :head

@@ -11,11 +11,17 @@ class User < ActiveRecord::Base
   
   validates_presence_of :first_name, :last_name, :username
 
+  mount_uploader :profile_picture, ProfilePictureUploader
+
   enum role: {
   	user: 0,
   	tour_guide: 1
   }
   before_save :assign_role_if_not_exists
+
+  def position
+    self.role == "tour_guide" ? "Tour guide" : "Tourist"
+  end
 
   private
 

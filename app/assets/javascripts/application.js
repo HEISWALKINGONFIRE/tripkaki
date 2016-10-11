@@ -32,7 +32,9 @@ $(function() {
       $("#filterrific_date_range").show();
     }
 	$(".index_page").css("height", $(window).height()+"px");
-	$(".bg2").css("height", $(window).height()+"px");
+  $(".bg1").css("height", $(window).height()+$("footer").height()+"px");
+  $(".bg2").css("height", $(window).height()+"px");
+  $(".bg3").css("height", $(window).height()+$("footer").height()+"px");
 	$(".role-selection input").on("click", function() {
 		$(this).parent().submit();
 	});
@@ -90,8 +92,8 @@ $(function() {
    
     $( "#slider-range" ).slider({
       range: true,
-      min: 42,
-      max: 4000,
+      min: 20,
+      max: 1000,
       values: [ 75, 300 ],
       slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );

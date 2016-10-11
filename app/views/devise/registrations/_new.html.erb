@@ -38,9 +38,14 @@
       </div>
 
       <div class="field form-group">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label :password_confirmation %><br/>
         <%= f.password_field :password_confirmation, autocomplete: "off" ,class:"form-control" %>
       </div>
+
+      <div>
+        <%= f.label :profile_picture %><br/>
+        <%= f.file_field :profile_picture, multiple: false %>
+      </div><br/>
 
       <div class="actions">
         <%= f.submit "Sign up", class:"btn btn-success" %>
