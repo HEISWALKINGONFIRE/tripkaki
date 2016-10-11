@@ -6,12 +6,15 @@
 
   <%= stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Lato" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
    <!-- Latest compiled and minified CSS -->
 
 </head>
 <body>
+<a href="javascript:" id="return-to-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+
 <%= render "layouts/navbar" %>
 <%= yield %>
 <%= render "layouts/footer" %>
