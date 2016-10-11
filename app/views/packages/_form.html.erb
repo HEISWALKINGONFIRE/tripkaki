@@ -39,7 +39,7 @@
 
 					<div>
 						<%= f.label :accommodation %><br>
-						<%= f.select :accommodation, options_for_select([ ["Yes", true], ["No", false] ]), :prompt => "Select accommodation"%>
+						<%= f.select :accommodation, options_for_select([ "Yes", "No" ]), :prompt => "Select accommodation"%>
 					</div>
 
 					<div>
@@ -72,6 +72,7 @@
 					</div>
 					
 					<div>
+	
 						<%= f.label :images %><br>
 						<%= f.file_field :images, multiple: true %>
 					</div><br/>
@@ -79,6 +80,7 @@
 					<div>
 						<%= f.submit :submit, id:"submit" %>	
 					</div>
+
 				<% end %>
 
 			</div>
@@ -86,6 +88,5 @@
 	</div>	
 
 </center>
+<br>
 
-
-:transportation, class:"form-control", id:"transportation", placeholder:"Transportation"
