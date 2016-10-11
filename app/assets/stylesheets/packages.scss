@@ -64,9 +64,10 @@
 	// text-align: center;
 	background-color: #2196f3;
 	width: 600px;
-	height: 900px;
+	height: auto;
 	border-radius: 30px; 
 	color: black;
+	padding: 10px;
 }
 
 #title
@@ -143,6 +144,13 @@
 		padding: 6px 12px;
 		font-size: 14px;
 	}
+	#package_images
+	{
+		// width: 100px;
+		// height: 30px;
+		// border-radius: 30px;
+		// background-color: white;
+	}
 #description
 {
 	width: 500px;
@@ -164,6 +172,7 @@
 	width: 100px;
 	height: 30px;
 	border-radius: 30px;
+	background-color: white;
 }
 
 tr.clickableRow { 
