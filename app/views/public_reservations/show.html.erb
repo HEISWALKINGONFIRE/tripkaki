@@ -1,19 +1,19 @@
 <div class="container">
 
-<h1><%= link_to "#{@package.title} - #{@package.day} day(s) tour", package_path(@package)%></h1>
+	<h1><%= link_to "#{@package.title} - #{@package.day} day(s) tour", package_path(@package)%></h1>
 
-<h4>Open Tour <span class=<%= @public_reservation.status %>>(<%= @public_reservation.status %>)</span></h4>
+	<h4>Open Tour <span class=<%= @public_reservation.status %>>(<%= @public_reservation.status %>)</span></h4>
 
-<p>Tour Guide: <%= @package.user.username %></p>
-<p>Start date: <%= @public_reservation.start_date %></p>
-<p>End date: <%= @public_reservation.end_date %></p>
-<p>Price: RM<%= @public_reservation.public_price %></p>
-<p>Participants: <%= @public_reservation.count_participants %>/<%=@package.head %></p>
+	<p>Tour Guide: <%= @package.user.username %></p>
+	<p>Start date: <%= @public_reservation.start_date %></p>
+	<p>End date: <%= @public_reservation.end_date %></p>
+	<p>Price: RM<%= @public_reservation.public_price %></p>
+	<p>Participants: <%= @public_reservation.count_participants %>/<%=@package.head %></p>
 
-<% if @public_reservation.status == 'Open' && @public_reservation.valid?(current_user.id) %>
+	<% if @public_reservation.status == 'Open' && @public_reservation.valid?(current_user.id) %>
 
-	<%= link_to "Book now", users_public_reservations_new_path(:public_reservation_id => @public_reservation.id), method: 'get', class: "btn btn-primary" %>
+		<%= link_to "Book now", users_public_reservations_new_path(:public_reservation_id => @public_reservation.id), method: 'get', class: "btn btn-primary" %>
 
-<% end %>
+	<% end %>
 
 </div>

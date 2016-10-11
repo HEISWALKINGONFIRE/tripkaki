@@ -1,0 +1,52 @@
+<% if flash[:alert] %>
+
+	<div class="alert alert-danger">
+
+		<%= flash[:alert] %>
+
+	</div>
+
+<% end %>
+
+<h3>Payment</h3>
+
+<div class="credit-card-form">
+
+	<%= form_for :checkout_form, url: users_public_reservations_path, html: {id:"checkout-form"} do |f|%>
+		
+	  <div class="field">
+			<p>Tour: <%= @package.title %></p>
+		</div>
+
+		<div class="field">
+			<%= f.hidden_field :public_reservation_id, :value => @public_reservation.id %>
+		</div>
+
+		<div class="field">
+	    <%= f.hidden_field :public_price, value: @public_reservation.public_price %>
+	  </div>
+
+	  <div id="error-message"></div>
+
+	  <div id="dropin-container"></div>
+
+	  <%= f.label :card_number, "Card Number"%>
+	  <div class="hosted-field" id="card-number"></div>
+	  
+	  <%= f.label :cvv, "CVV"%>
+	  <div class="hosted-field" id="cvv"></div>
+
+	  <%= f.label :expiration_date, "Expiration_date"%>
+	  <div class="hosted-field" id="expiration-date"></div>
+
+	  <%= f.hidden_field "payment_method_nonce" %>
+
+		<%= f.submit "Proceed", disabled: true, class: "btn btn-primary", id: "submit-payment" %>
+
+	<% end %>
+
+</div>
+
+	 <script src="https://js.braintreegateway.com/web/3.3.0/js/client.min.js"></script>
+
+	 <script src="https://js.braintreegateway.com/web/3.3.0/js/hosted-fields.min.js"></script>

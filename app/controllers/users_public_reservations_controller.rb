@@ -29,6 +29,8 @@ class UsersPublicReservationsController < ApplicationController
 						:submit_for_settlement => true
 					}
 			)
+
+
 		
 		if @result.success? 
 			transaction = @result.transaction
@@ -41,7 +43,7 @@ class UsersPublicReservationsController < ApplicationController
 
 		else 
 
-			flash[:alert] = "Something went wrong while processing your transaction. Please try again!"
+			flash.now[:alert] = "Something went wrong while processing your transaction. Please try again!"
 			render :new
 
 		end

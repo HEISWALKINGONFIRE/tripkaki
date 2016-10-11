@@ -1,19 +1,29 @@
-<% if flash[:success] %>
+<div class="container">
 
-	<div class="alert alert-success">
+	<% if flash[:success] %>
 
-		<%= flash[:success] %>
+		<div class="alert alert-success">
 
-	</div>
+			<%= flash[:success] %>
 
-<% end %>
+		</div>
 
-<h3>Confirmation</h3>
+	<% end %>
 
-<p>Reservation id: <%= @user_public_reservation.id%></p>
-<p>Tour: <%= link_to @package.title, package_path(@package), method: 'get' %></p>
-<p>Guide: <%= @package.user.username %></p>
-<p>Type: Open Tour </p>
-<p>Start date: <%= @public_reservation.start_date %></p>
-<p>End date: <%= @public_reservation.end_date %></p>
-<p>Payment: RM<%= @public_reservation.public_price %></p>
+	<h3>Confirmation <span id="count_down"> <%= @public_reservation.count_down %></span></h3>
+
+	<p>Reservation id: <%= @user_public_reservation.id%></p>
+
+	<p>Tour: <%= link_to @package.title, package_path(@package), method: 'get' %></p>
+
+	<p>Guide: <%= @package.user.username %></p>
+
+	<p>Type: Open Tour </p>
+
+	<p>Start date: <%= @public_reservation.start_date %></p>
+
+	<p>End date: <%= @public_reservation.end_date %></p>
+
+	<p>Payment: RM<%= @public_reservation.public_price %></p>
+
+</div>
