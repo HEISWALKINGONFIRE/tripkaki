@@ -18,6 +18,7 @@ prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
 
   # POST /resource
   def create
+    
     build_resource(sign_up_params)
     resource.role = params[:user][:role].to_i if validates_role(params[:user][:role])
     resource.save
@@ -71,8 +72,12 @@ prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
   end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :first_name, :last_name, :profile_picture, :password, :password_confirmation, :email])
   # end
+
+  def sign_up_params
+    params.require(:user).permit(:email, :username, :first_name, :last_name, :profile_picture, :password, :password_confirmation)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

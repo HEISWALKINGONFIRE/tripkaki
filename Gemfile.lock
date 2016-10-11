@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: fa9d1e3d301b03cf2e8457a530c162265f439bf2
+  specs:
+    carrierwave (1.0.0.beta)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -101,6 +110,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
     momentjs-rails (2.15.1)
@@ -191,6 +201,7 @@ DEPENDENCIES
   braintree
   byebug
   carmen-rails
+  carrierwave!
   coffee-rails (~> 4.1.0)
   devise
   figaro
@@ -200,6 +211,7 @@ DEPENDENCIES
   jquery-rails
   jquery-scrollto-rails
   jquery-ui-rails
+  mini_magick
   momentjs-rails
   pg
   rails (= 4.2.6)
