@@ -1,22 +1,11 @@
-<footer id="footerWrapper">
+<footer id="footerWrapper" class="<%= "footer-margin" unless current_page?(root_path) %>">
 	<section id="mainFooter">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-4">
-					<div class="footerWidget">
-						<ul>
-							<h3>About</h3>
-							<a href="/"><li>About Us</li></a>
-							<a href="/"><li>Contact Us</li></a>
-							<a href="/"><li>Company</li></a>
-							<a href="/"><li>Privacy Policy</li></a>
-						</ul>
-					</div>
-				</div>
 				<div class="col-sm-5">
 					<div class="footerWidget">
 
-						<h3>TripKaki</h3>
+						<%= link_to root_path, method: "get" do  %><%= image_tag("logo_white.png") %><% end %> 
 						<address>
 							<p><i class=""></i>AG-7, Glomac Damansara, Jalan Damansara,<br>
 								 Tmn Tun Dr Ismail, 60000, Malaysia<br>
@@ -25,14 +14,25 @@
 							</address>
 						</div>
 					</div>
+				<div class="col-sm-4">
+					<div class="footerWidget">
+						<ul>
+							<h5>About</h5>
+							<a href="/"><li>About Us</li></a>
+							<a href="/"><li>Contact Us</li></a>
+							<a href="/"><li>Company</li></a>
+							<a href="/"><li>Privacy Policy</li></a>
+						</ul>
+					</div>
+				</div>
 					<div class="col-sm-3">
 						<div class="footerWidget">
-							<h3>Follow us, we are social</h3>
+							<h5>Follow us, we are social</h5>
 							<div class="socialNetwork">
-								<a href="/" class="tips" title="follow me on Facebook"><i class="fa fa-inverse fa-facebook fa-2x"></i></a>
-								<a href="/" class="tips" title="follow me on Twitter"><i class="fa fa-inverse fa-twitter fa-2x"></i></a>
-								<a href="#" class="tips" title="follow me on Google+"><i class="icon-gplus-1 iconRounded"></i></a>
-								<a href="#" class="tips" title="follow me on Linkedin"><i class="icon-linkedin-1 iconRounded"></i></a>
+								<a href="/" class="tips" title="follow me on Facebook"><i class="fa fa-facebook"></i></a>
+								<a href="/" class="tips" title="follow me on Twitter"><i class="fa fa-twitter"></i></a>
+								<a href="#" class="tips" title="follow me on Google+"><i class="fa fa-google-plus"></i></a>
+								<a href="#" class="tips" title="follow me on Linkedin"><i class="fa fa-linkedin"></i></a>
 							</div>     
 						</div>
 					</div>
