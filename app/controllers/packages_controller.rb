@@ -74,7 +74,7 @@ class PackagesController < ApplicationController
 
 	private
 		def package_params
-			params.require(:package).permit(:title, :destination, :state, :country, :day, :description, :accommodation, :transportation, :meal, :head, :public_price, :private_price, {images: []})
+			params.require(:package).permit(:title, :destination, :state, :country, :day, :description, :accommodation, :transportation, :meal, :head, :public_price, :private_price, {images:[]})
 		end
 
 		def authenticate_tour_guide!

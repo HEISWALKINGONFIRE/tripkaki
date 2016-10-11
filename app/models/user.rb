@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   
   validates_presence_of :first_name, :last_name, :username
 
-  mount_uploaders :profile_picture, ProfilePictureUploader
+  mount_uploader :profile_picture, ProfilePictureUploader
 
   enum role: {
   	user: 0,

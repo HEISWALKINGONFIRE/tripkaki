@@ -66,6 +66,11 @@
 				<%= f.text_area :description , class:"form-control", id:"description", placeholder:"Description" %> 		
 			</div>
 
+			<div>
+				<%= f.label :images %><br>
+				<%= f.file_field :images, multiple: true %>
+			</div>
+
 			<div><%= f.submit :submit %></div>
 		
 		</div>
