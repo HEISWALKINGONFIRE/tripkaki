@@ -18,8 +18,10 @@
 //= require filterrific/filterrific-jquery
 //= require moment
 //= require daterangepicker
+//= require jquery.scrollTo
 //= require turbolinks
 //= require_tree .
+
 
 $(function() {
   if ($("#filterrific_tour_type option:selected").val() == "private") {
@@ -50,6 +52,20 @@ $(function() {
     }
   })
 
+
+	$(window).scroll(function() {
+	    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+	        $('#return-to-top').fadeIn(200);    // Fade in the arrow
+	    }	else {
+	        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+	    } 
+	});
+	$('#return-to-top').click(function() {      // When arrow is clicked
+	    $('body,html').animate({
+	        scrollTop : 0                       // Scroll to top of body
+	    }, 500);
+	});
+
   var availableTags = [
     "Kuala Lumpur",
     "Labuan",
@@ -74,8 +90,8 @@ $(function() {
    
     $( "#slider-range" ).slider({
       range: true,
-      min: 42,
-      max: 4000,
+      min: 20,
+      max: 1000,
       values: [ 75, 300 ],
       slide: function( event, ui ) {
         $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
@@ -84,5 +100,6 @@ $(function() {
     });
     $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
       " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
 });
 
