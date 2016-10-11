@@ -26,9 +26,8 @@
 			<% @user.private_reservations.each do |private_reservation| %>
 				<p>Reservation: <%= link_to private_reservation.package.title, private_reservation %></p>
 			<% end %> 
-		</div>
+
 			<%= link_to "Edit Profile", edit_user_url, method: "get", class: "btn btn-danger"  %>
-			
-		</div>
+			</div>
 	</div>
 </div>	
