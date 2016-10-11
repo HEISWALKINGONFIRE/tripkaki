@@ -16,11 +16,13 @@
 		    <p><%= "I am a #{@user.position}" %></p>
 		  </div>
 	  </div>
+	  <% if @user.role == "tour_guide" %>
+	  	<h3>Available Packages</h3>
+	  <% end %>
 	  <div class="card__content">
 	    <% if @packages.present? %>
-	    	<h3>Available Packages</h3>
 	    	<% @packages.each do |p| %>
-		    	<p><%=link_to p.title, package_path(p.id), method: 'get'%></p>
+		    	<div class="card-block card__package"><%=link_to p.title, package_path(p.id), method: 'get'%></div>
 		   	<% end %>
 			<% end %>
 			<% @user.private_reservations.each do |private_reservation| %>

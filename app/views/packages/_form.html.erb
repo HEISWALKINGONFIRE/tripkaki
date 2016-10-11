@@ -58,20 +58,17 @@
 					</div>
 
 					<div class="form-group">
-						<div> 
+					
 							<%= f.label :private_price, "Price for a private tour" %>
 							<%= f.text_field :private_price, id:"price", placeholder:"$100 ~ $200"%>
-						</div>
 					</div>
 
-					</div>
-
-					<div>
+					<div class="form-group">
 						<%= f.label :description %><br>
 						<%= f.text_area :description , class:"form-control", id:"description", placeholder:"Description" %> 		
 					</div>
 					
-					<div>
+					<div class="form-group">
 	
 						<%= f.label :images %><br>
 						<%= f.file_field :images, multiple: true %>
