@@ -36,4 +36,17 @@ class PublicReservation < ActiveRecord::Base
     self.users_public_reservations.find_by('user_id =?',id).nil?
   end
 
+  def count_down
+    result = (self.start_date - Date.today).to_i
+
+    if result > 1
+      return result.to_s + ' days'
+    elsif result == 1
+      return '1 day'
+    else
+      return 'Expired'
+    end
+
+  end
+
 end

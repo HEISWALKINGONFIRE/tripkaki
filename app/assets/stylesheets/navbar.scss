@@ -3,8 +3,17 @@
 	font-size: 18px;
 	padding-top: 13px;
 	padding-bottom: 13px;
-	border-radius: 0;
-	border: 0;
+	border-radius: 0 !important;
+	border: none !important;
+	box-shadow: 0px -3px 5px 5px rgba(0,0,0,.46);
+	ul {
+		height: 61px !important;
+	}
+	ul, li {
+		height: 100%;
+		display: flex !important;
+		align-items: center;	
+	}
 	li a, a{
 		color: white !important;
 	}
@@ -12,7 +21,7 @@
 		display: inline-block;
 		height: 100%;
 		img{
-			width: 130px;
+			width: 100px;
 			height: auto;
 		}
 	}
@@ -33,12 +42,18 @@
 	z-index: 3;
 	width: 100% !important;
 	border-color: rgba(0,0,0,0) !important;
+	box-shadow: none;
+	// &:after {
+	// 	content: "";
+	// 	width: 100%;
+	// 	border-bottom: 1px #ccc solid;
+	// }
 }
 
 .logout-btn, .signup-btn {
 	border: 3px solid white;
 	border-radius: 3em;
-	margin-top: 10px;
+	margin-left: 2vw;
 	padding-right:20px !important;
 	padding-left: 20px !important;
 
@@ -50,7 +65,7 @@
 }
 
 .search_package-btn, .new_package-btn, .profile-btn, .login-btn {
-	 margin-top: 12px;
+	 // margin-top: 12px;
 
 	&:hover {
 		color: #ccc !important;
