@@ -21,15 +21,10 @@
       </div>
       <%# add an automated spinner to your form when the list is refreshed %>
       <%= render_filterrific_spinner %>
-    
-<% end %>
+    <% end %>
 
-
-<%= render(
-  partial: 'packages/list',
-  locals: { packages: @packages }
-) %>
-
+    <%= render(partial: 'packages/list',locals: { packages: @packages }) %>
+  </div>
 
 </div>
 
