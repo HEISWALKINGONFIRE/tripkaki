@@ -211,9 +211,7 @@ DEPENDENCIES
   jquery-rails
   jquery-scrollto-rails
   jquery-ui-rails
-
   mini_magick
-
   momentjs-rails
   pg
   rails (= 4.2.6)
