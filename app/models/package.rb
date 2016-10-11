@@ -4,6 +4,16 @@ class Package < ActiveRecord::Base
 	has_many :private_reservations
 	has_many :public_reservations
 
+	scope :tour_type, -> (tour) {
+		case tour.to_s
+		when /private/
+			@private = true
+			all
+		when /public/
+			@private = false
+			joins(:public_reservations).select("packages.*, public_reservations.id as public_id, public_reservations.start_date, public_reservations.end_date, public_reservations.public_price")
+		end
+	}
 	scope :sorted_by, -> (sort) {
 		direction = (sort =~ /desc$/) ? 'desc' : 'asc'
 	 case sort.to_s
@@ -15,19 +25,39 @@ class Package < ActiveRecord::Base
 	   order("packages.created_at #{ direction }")
 	 when /^name_/
 	   # Simple sort on the name colums
-	   order("LOWER(packages.title) #{ direction }, LOWER(packages.title) #{ direction }")
+	   order("LOWER(packages.title) #{ direction }")
+	 when /^price_/
+		 	if @private.nil? || !@private
+	 			joins(:public_reservations).select("packages.*, public_reservations.id as public_id, public_reservations.start_date, public_reservations.end_date, public_reservations.public_price").order("public_reservations.public_price #{direction}") 
+	 		else
+	 			order("packages.private_price #{direction}")
+	 		end
 	 else
 	   raise(ArgumentError, "Invalid sort option: #{ sort.inspect }")
 	 end
 	}
-	scope :search_query, -> (query) {where('LOWER(title) LIKE ?', "#{query}%")}
+	scope :search_query, -> (query) { 
+		state = Carmen::Country.named("malaysia", fuzzy: true).subregions.named(query, fuzzy: true).code if Carmen::Country.named("malaysia", fuzzy: true).subregions.named(query, fuzzy: true)
+		where(state: "#{state}")
+	 }
+	 scope :date_range, -> (range) {
+	 	# byebug
+	 	all if range == nil
+	 	arr = range.split(" - ")
+	 	sdate =  Date.strptime(arr[0], '%m/%d/%Y')
+	 	edate =  Date.strptime(arr[1], '%m/%d/%Y')
+
+	 	where('start_date <= ? AND end_date >= ?', edate, sdate)
+	 }
 	scope :price_range, ->(min, max) { where(price: min..max)}
 	
 	filterrific(
 	  default_filter_params: { sorted_by: 'created_at_desc' },
 	  available_filters: [
+	  	:tour_type,
 	    :sorted_by,
 	    :search_query,
+	    :date_range
 	  ]
 	)
 
@@ -37,9 +67,20 @@ class Package < ActiveRecord::Base
     [
     	['Created at', 'created_at_asc'],
       ['Name (AZ)', 'name_asc'],
-      ['Name (ZA)', 'name_desc']
+      ['Name (ZA)', 'name_desc'],
+      ['Price (Low to High)', 'price_asc'],
+      ['Price (High to Low)', 'price_desc']
+
      ]
   end
+
+  def self.options_for_tour_type
+  	[
+  		['Private', 'private'],
+  		['Public', 'public']
+  	]
+  end
+
 
   def country_name
   	Carmen::Country.coded(self.country).name

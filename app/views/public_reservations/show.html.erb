@@ -12,7 +12,7 @@
 
 	<% if @public_reservation.status == 'Open' && @public_reservation.valid?(current_user.id) %>
 
-		<%= link_to "Book now", users_public_reservations_new_path(:public_reservation_id => @public_reservation.id), method: 'get', class: "btn btn-primary" %>
+		<%= link_to "Book now", new_users_public_reservation_path(:public_reservation_id => @public_reservation.id), method: 'get', class: "btn btn-primary" %>
 
 	<% end %>
 

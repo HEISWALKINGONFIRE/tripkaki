@@ -1,33 +1,32 @@
-<h1>Packages#index</h1>
-<p>Find me in app/views/packages/index.html.erb</p>
+<div class="container">
+  <div class="tour-form">
+    <h1>Search Package</h1>
 
-<%= form_for_filterrific @filterrific do |f| %>
-  <div>
-    Search
-    <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
-    <%= f.text_field(
-      :search_query,
-      class: 'filterrific-periodically-observed'
-    ) %>
-  </div>
-  <div>
-    Sorted by
-    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-  </div>
-  <div>
-    <%= link_to(
-      'Reset filters',
-      reset_filterrific_url,
-    ) %>
-  </div>
-  <%# add an automated spinner to your form when the list is refreshed %>
-  <%= render_filterrific_spinner %>
-<% end %>
+    <%= form_for_filterrific @filterrific do |f| %>
+      <div class="form-group">
+        Search
+        <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+        <%= f.text_field(:search_query,class: 'filterrific-periodically-observed form-control') %>
+      </div>
+      <div class="form-group">
+        Sorted by
+        <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], class:"form-control") %>
+      </div>
+      <div class="form-group">
+        Tour type
+        <%= f.select(:tour_type, @filterrific.select_options[:tour_type], class:"form-control") %>
+      </div>
+      <div class="form-group">
+        <%= link_to('Reset filters',reset_filterrific_url, class:"btn btn-danger") %>
+      </div>
+      <%# add an automated spinner to your form when the list is refreshed %>
+      <%= render_filterrific_spinner %>
+    <% end %>
 
-<%= render(
-  partial: 'packages/list',
-  locals: { packages: @packages }
-) %>
+    <%= render(partial: 'packages/list',locals: { packages: @packages }) %>
+  </div>
+
+</div>
 
 
 

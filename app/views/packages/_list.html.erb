@@ -1,15 +1,20 @@
-<div id="filterrific_results">
 
-  <div>
-    <%= page_entries_info packages %>
-  </div>
+  <div id="filterrific_results">
 
-  <table>
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>Title</th>
         <th>Country</th>
         <th>State</th>
+        <% if packages.first.respond_to? :start_date %>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Price (per head count)</th>
+        <% else %>
+          <th>Price</th>
+        <% end %>
+
       </tr>
     </thead>
     <% packages.each do |package| %>
@@ -17,11 +22,31 @@
         
             <td><%= link_to package.title, package, method: "get"  %> </td>
         
+            <% if package.respond_to? :start_date %>
+              <td><%= link_to package.title, package_public_reservation_path(package.id, package.public_id) %> </td>
+            <% else %>
+              <td><%= link_to package.title, package %> </td>
+            <% end %> 
+
             <td><%= package.country_name %></td>
             <td><%= package.state_name %></td>
+            <% if package.respond_to? :start_date %>
+              <td><%= package.start_date %></td>
+              <td><%= package.end_date %></td>
+              <td><%= package.public_price %></td>
+            <% else %>
+              <td><%= package.private_price %></td>
+            <% end %>
           </tr>
     <% end %>
   </table>
 </div>
 
+<div>
+  <%= page_entries_info packages %>
+</div>
+
+
+
 <%= will_paginate packages %>
+

@@ -5,13 +5,14 @@
 			<h1>CREATIVE HOLIDAY</h1>
 			<p>CREATE YOUR <span class="typed-cursor"></span><span class="element">KIND OF HOLIDAY.</span></p>
 		</div>
+		<%= form_tag({ controller: "packages", action: "index" }, id: "filterrific_filter", class: "new_filterrific") do %>
 		<div class="input-group input-group-lg">
-			<input id= "searchbar" class="form-control" name="" placeholder="Where to...?"" type="text">
+			<%= text_field_tag('filterrific[search_query]', "",  class: 'filterrific-periodically-observed form-control',id: "searchbar", placeholder: "Where to...?", autocomplete: "off"  ) %>
 				<span class="input-group-btn">
 					<button id="submit-btn" class="btn btn-danger" type="submit" title="Search">Search</button>	
 				</span>
 		</div>
-			
+		<% end %>
 		</div>
 	</div>
 </div>

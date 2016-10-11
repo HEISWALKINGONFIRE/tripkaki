@@ -14,12 +14,21 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
-//= require_tree .
 //= require typed
 //= require filterrific/filterrific-jquery
+//= require moment
+//= require daterangepicker
+//= require turbolinks
+//= require_tree .
 
 $(function() {
+  if ($("#filterrific_tour_type option:selected").val() == "private") {
+      $("#filterrific_date_range").parent().hide();
+      
+    } else {
+
+      $("#filterrific_date_range").show();
+    }
 	$(".index_page").css("height", $(window).height()+"px");
 	$(".bg2").css("height", $(window).height()+"px");
 	$(".role-selection input").on("click", function() {
@@ -30,4 +39,39 @@ $(function() {
       strings: ["KIND OF HOLIDAY.", "SWEET MEMORIES.", "AWESOME TRIPS.", "SPECIAL GETAWAY." ],
       typeSpeed: 55
   });
+  $('input[name="filterrific[date_range]"]').daterangepicker();
+  $("#filterrific_tour_type").change(function() {
+    if ($("#filterrific_tour_type option:selected").val() == "private") {
+      $("#filterrific_date_range").parent().hide();
+      
+    } else {
+
+      $("#filterrific_date_range").parent().show();
+    }
+  })
+
+  var availableTags = [
+    "Kuala Lumpur",
+    "Labuan",
+    "Putrajaya",
+    "Johor",
+    "Kedah",
+    "Kelantan",
+    "Malacca",
+    "Negeri Sembilan",
+    "Pahang",
+    "Penang",
+    "Perak",
+    "Perlis",
+    "Sabah",
+    "Sarawak",
+    "Selangor",
+    "Terengganu"
+    ];
+    $( "#filterrific_search_query" ).autocomplete({
+      source: availableTags
+    });
+   
+  
 });
+

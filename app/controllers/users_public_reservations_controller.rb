@@ -8,6 +8,7 @@ class UsersPublicReservationsController < ApplicationController
 		# @user_public_reservation = UsersPublicReservation.new
 		@public_reservation = PublicReservation.find(params[:public_reservation_id])
 		@package = @public_reservation.package
+		@client_token = Braintree::ClientToken.generate
 
 	end
 

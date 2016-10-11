@@ -1,0 +1,15 @@
+<!-- PrivateReservations#Show -->
+
+<h1><%= @private_reservation.package.title %> Private Reservation</h1>
+<p><%= @private_reservation.package.description %></p><br/>
+
+<li><strong>Head Count:</strong> <%= @private_reservation.head_count %></li>
+<li><strong>Start Date:</strong> <%= @private_reservation.start_date %></li>
+<li><strong>End Date:</strong> <%= @private_reservation.end_date %></li>
+
+<% if current_user == @private_reservation.user %>
+	<%= link_to "Edit Reservation", edit_package_private_reservation_path(@private_reservation.package, @private_reservation) %><br/>
+
+	<%= link_to "Cancel Reservation", private_reservation_path(@private_reservation), method: :delete, data: {confirm: 'Are you sure?'} %>
+<% end %>
+
