@@ -21,6 +21,7 @@ gem 'will_paginate'
 gem 'braintree'
 gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
+gem "jquery-scrollto-rails"
 
 group :development, :test do
   gem 'byebug'
