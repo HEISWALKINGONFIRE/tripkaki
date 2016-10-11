@@ -60,7 +60,7 @@ $(function() {
     "Malacca",
     "Negeri Sembilan",
     "Pahang",
-    "Penang",
+    "Pulau Pinang",
     "Perak",
     "Perlis",
     "Sabah",
@@ -72,6 +72,17 @@ $(function() {
       source: availableTags
     });
    
-  
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 42,
+      max: 4000,
+      values: [ 75, 300 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        $( "#filterrific_price_range" ).val(ui.values[0] + "-" + ui.values[1]);
+      }
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
 });
 

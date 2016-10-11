@@ -39,17 +39,27 @@ class Package < ActiveRecord::Base
 	scope :search_query, -> (query) { 
 		state = Carmen::Country.named("malaysia", fuzzy: true).subregions.named(query, fuzzy: true).code if Carmen::Country.named("malaysia", fuzzy: true).subregions.named(query, fuzzy: true)
 		where(state: "#{state}")
-	 }
-	 scope :date_range, -> (range) {
-	 	# byebug
-	 	all if range == nil
-	 	arr = range.split(" - ")
-	 	sdate =  Date.strptime(arr[0], '%m/%d/%Y')
-	 	edate =  Date.strptime(arr[1], '%m/%d/%Y')
+	}
+	scope :date_range, -> (range) {
+		# byebug
+		all if range == nil
+		arr = range.split(" - ")
+		sdate =  Date.strptime(arr[0], '%m/%d/%Y')
+		edate =  Date.strptime(arr[1], '%m/%d/%Y')
 
-	 	where('start_date <= ? AND end_date >= ?', edate, sdate)
-	 }
-	scope :price_range, ->(min, max) { where(price: min..max)}
+		where('start_date <= ? AND end_date >= ?', edate, sdate)
+	}
+	scope :price_range, ->(range) { 
+		arr = range.to_s.split("-")
+		min = arr[0].to_i
+		max = arr[1].to_i
+		# byebug
+		if @private.nil? || !@private
+ 			joins(:public_reservations).select("packages.*, public_reservations.id as public_id, public_reservations.start_date, public_reservations.end_date, public_reservations.public_price").where("public_reservations.public_price <= #{max} AND public_reservations.public_price >= #{min}")
+ 		else
+ 			where(private_price: min..max)
+ 		end
+	}
 	
 	filterrific(
 	  default_filter_params: { sorted_by: 'created_at_desc' },
@@ -57,7 +67,8 @@ class Package < ActiveRecord::Base
 	  	:tour_type,
 	    :sorted_by,
 	    :search_query,
-	    :date_range
+	    :date_range,
+	    :price_range
 	  ]
 	)
 
