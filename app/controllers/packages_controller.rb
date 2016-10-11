@@ -87,4 +87,5 @@ class PackagesController < ApplicationController
     redirect_to root_path unless current_user.role == "tour_guide"
   end
 
+
 end
