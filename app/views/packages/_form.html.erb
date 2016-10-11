@@ -73,7 +73,25 @@
 					<%= f.submit :submit, id:"submit" %>
 						
 				</div>
+<<<<<<< HEAD
 			<% end %>
+=======
+			</div>
+
+			<div>
+				<%= f.label :description %><br>
+				<%= f.text_area :description , class:"form-control", id:"description", placeholder:"Description" %> 		
+			</div>
+			
+			<div>
+				<%= f.label :images %><br>
+				<%= f.file_field :images, multiple: true %>
+			</div>
+
+			<br>
+			<div><%= f.submit :submit, id:"submit" %></div>
+		
+>>>>>>> b732e9304e34be6c2e7fa1327fea29a77d90fcd7
 		</div>
 	</div>
 </div>	
