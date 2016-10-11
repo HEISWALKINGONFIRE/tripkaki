@@ -3,10 +3,11 @@ class PackagesController < ApplicationController
   before_action :authenticate_tour_guide!, only: [:new, :create, :edit, :delete, :update]
 
   def index
-    # byebug
+  
     if params[:filterrific].present? && params[:filterrific][:tour_type] == "private"
       params[:filterrific][:date_range] = nil
     end
+  
     @filterrific = initialize_filterrific(
         Package,
         params[:filterrific],
@@ -16,7 +17,8 @@ class PackagesController < ApplicationController
         }
       ) or return
       @packages = @filterrific.find.page(params[:page])
-      # byebug
+      
+    
       respond_to do |format|
         format.html
         format.js
@@ -28,6 +30,7 @@ class PackagesController < ApplicationController
   end
 
   def create
+  
   
     @package = current_user.packages.new(package_params)
 
@@ -86,4 +89,6 @@ class PackagesController < ApplicationController
   def authenticate_tour_guide!
     redirect_to root_path unless current_user.role == "tour_guide"
   end
+
+
 end

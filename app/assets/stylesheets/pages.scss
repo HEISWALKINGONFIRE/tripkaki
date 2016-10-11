@@ -50,6 +50,11 @@
 			height: 60px;
 			border-top-left-radius: 2em;
 			border-bottom-left-radius: 2em;	
+			&:focus  {
+				box-shadow: 0 0 10px  #c9302c;
+				border: none;
+
+			}
 		}
 		#submit-btn {
 			width: 120px;

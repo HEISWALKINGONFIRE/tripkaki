@@ -5,6 +5,4 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@packages = @user.packages if @user.role == "tour_guide"
 	end
-
-	
 end
