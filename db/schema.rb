@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20161007081011) do
   enable_extension "plpgsql"
 
   create_table "packages", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",          null: false
     t.string   "destination"
-    t.string   "state"
-    t.string   "country"
-    t.integer  "day"
-    t.text     "description"
+    t.string   "state",          null: false
+    t.string   "country",        null: false
+    t.integer  "day",            null: false
+    t.text     "description",    null: false
     t.string   "accommodation"
     t.string   "transportation"
     t.string   "meal"
