@@ -19,8 +19,16 @@ gem "typedjs-rails", "~> 1.0.4"
 gem 'filterrific'
 gem 'will_paginate'
 
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+gem 'braintree'
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
+gem "jquery-scrollto-rails"
+
 group :development, :test do
   gem 'byebug'
+  gem 'figaro'
 end
 
 group :development do
