@@ -37,7 +37,7 @@ class Package < ActiveRecord::Base
 	 end
 	}
 	scope :search_query, -> (query) { 
-		state = Carmen::Country.named("malaysia", fuzzy: true).subregions.named(query, fuzzy: true).code
+		state = Carmen::Country.named("malaysia", fuzzy: true).subregions.named(query, fuzzy: true).code if Carmen::Country.named("malaysia", fuzzy: true).subregions.named(query, fuzzy: true)
 		where(state: "#{state}")
 	 }
 	 scope :date_range, -> (range) {

@@ -14,12 +14,12 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require turbolinks
-//= require_tree .
 //= require typed
 //= require filterrific/filterrific-jquery
 //= require moment
 //= require daterangepicker
+//= require turbolinks
+//= require_tree .
 
 $(function() {
   if ($("#filterrific_tour_type option:selected").val() == "private") {
@@ -49,5 +49,29 @@ $(function() {
       $("#filterrific_date_range").parent().show();
     }
   })
+
+  var availableTags = [
+    "Kuala Lumpur",
+    "Labuan",
+    "Putrajaya",
+    "Johor",
+    "Kedah",
+    "Kelantan",
+    "Malacca",
+    "Negeri Sembilan",
+    "Pahang",
+    "Penang",
+    "Perak",
+    "Perlis",
+    "Sabah",
+    "Sarawak",
+    "Selangor",
+    "Terengganu"
+    ];
+    $( "#filterrific_search_query" ).autocomplete({
+      source: availableTags
+    });
+   
+  
 });
 
