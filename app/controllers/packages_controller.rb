@@ -86,4 +86,5 @@ class PackagesController < ApplicationController
   def authenticate_tour_guide!
     redirect_to root_path unless current_user.role == "tour_guide"
   end
+
 end
