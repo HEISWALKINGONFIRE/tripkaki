@@ -31,7 +31,7 @@ footer {
   position: absolute !important;
 	z-index: 3;
 	width: 100% !important; 
-	// box-shadow: inset 0 20px 20px -20px rgba(0,0,0,.56);
+	box-shadow: inset 0 20px 20px -20px rgba(0,0,0,.56);
 	border-top: 1px rgba(255,255,255,.334) solid;
 
 	h1,h2,h3,h4,h5 {
@@ -65,4 +65,5 @@ footer {
 }
 .footer-transparent {
 	background: transparent;
+	box-shadow: none;
 }
