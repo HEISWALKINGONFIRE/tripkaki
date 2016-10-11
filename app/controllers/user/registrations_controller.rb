@@ -36,7 +36,7 @@ prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
       clean_up_passwords resource
       set_minimum_password_length
       respond_with resource
-end
+    end
   end
 
   # GET /resource/edit
