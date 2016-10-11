@@ -18,10 +18,7 @@
       </tr>
     </thead>
     <% packages.each do |package| %>
-          <tr>
-        
-            <td><%= link_to package.title, package, method: "get"  %> </td>
-        
+          <tr>       
             <% if package.respond_to? :start_date %>
               <td><%= link_to package.title, package_public_reservation_path(package.id, package.public_id) %> </td>
             <% else %>
