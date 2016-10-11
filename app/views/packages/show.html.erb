@@ -1,83 +1,224 @@
-<div class = 'container'>
-	<div class="show-package">
-
-		<h1>Packages#show</h1>
-		<h4>Username: <%= @user.username %></h4>
-
-		<h4>Title: <%= @package.title %> </h4>
 
 
-		<% if @user == current_user %>
+<div class="container" id="show-package">
 
-			<%= link_to "Edit", edit_package_path(@package)%>
-			<%= link_to "Delete", package_path(@package), method: 'delete' %>
+	<div class='card'>
+		<div class='card-block'>
 
-		<% end %>
+			<div class="row">
+				<div class="col-md-2 two"> 
+					<img src="/david1.jpg" alt="" class="pack-profile" style="width:90px;height:90px;">
+				</div>
 
-			<p>Destination: <%= @package.destination %></p>
-			<p>Country: <%= @package.country_name %></p>
-			<p>State: <%= @package.state_name %> </p>
-			<p>Day: <%= @package.day %> </p>
-			<p>Description: <%= @package.description %> </p>
-			<p>Accommodation: <%= @package.accommodation %> </p>
-			<p>Transportation: <%= @package.transportation %> </p>
-			<p>Meals: <%= @package.meal %> </p>
-			<p>Maximum participant: <%= @package.head %> </p>
-			<p>Price (Private Tour): RM<%= @package.private_price %></p>
+					<div class="col-md-10">
+						<h1><%= @package.title %> </h1>
+					</div>
+
+					<div class="col-md-10">
+						<p><%=@package.state_name%>, <%= @package.country_name %></p>
+					</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2", id="username">
+					<a href="#"><%= @user.username %></a>
+				</div>
+
+				<div class="col-md-10">
+						<p>
+				<% @package.activities.each do |a| %>
+
+						<span id="activities"><%= a %></span>
+
+						<% end %>
+
+						</p>
+				</div>
+			</div>
+
+			<div class='row'>
+				<div class='col-md-10'>
+					<%= render partial: 'packages/carousel'%>
+				</div>
+			
+				<div class='col-md-2 info'>
+					<img src="/heads_5.png" class="icon" id="icon-heads" style="width:70px;height:50px">
+					<p><%= @package.head %> Kakis </p>
+
+					<img src="/days_2.png" class="icon" id="icon-days" style="width:70px;height:70px">
+						<p><%= @package.count_days %> </p>
+					
+					<img src="/tour_2.png" class="icon" id="icon-tour" style="width:70px;height:70px">
+					<p>RM <%= @package.private_price %> </p>
+				<div id="bounce">
+					<a href="#private"><img src="/tour_1.png" class="icon" id="icon-tour-2" style="width:85px;height:85px"></a>
+				</div>
 
 
-		<% if user_signed_in? && @user != current_user %>
-			<%= link_to "Create a Private Tour!" , "/packages/#{@package.id}/private_reservations/new", method: "get" %>
-			<p>Can't find suitable tour? <%= link_to "Create your own!", root_path %></p>
-		<% elsif user_signed_in? && @user == current_user %>
-			<%= link_to "Create a Public Tour!" , "/packages/#{@package.id}/public_reservations/new", method: "get" %><br/>
-		<% end %> 
-		
-		<div class="available-tour">	
-		<h3>Available Open Tour(s)</h3>
 
-			<% if @public_reservations.any? %>
+				<% if @user == current_user %>
 
-				<table class="table table-hover" >
-						<tr>
-							<th>No</th>
-							<th>Start date</th>
-							<th>End date</th>
-							<th>Price per pax</th>
-							<th>Participants</th>
-							<th>Status</th>
-							<th></th>
-						</tr>
+					<%= link_to "Edit", edit_package_path(@package)%>
+					<%= link_to "Delete", package_path(@package), method: 'delete' %>
 
-						<% count = 1 %>
-
-					<% @public_reservations.each do |p| %>
-
-						<tr class="clickableRow" data-link="<%= package_public_reservation_path(@package, p) %>" style:"cursor:pointer">
-
-							<td><%= count %></td>
-							<td><%= p.start_date %></td>
-							<td><%= p.end_date %></td>
-							<td>RM<%= p.public_price %></td>
-							<td><%= p.count_participants %>/<%= @package.head %></td>
-							<td class='<%=p.status%>', id='<%=p.status%>'><%= p.status %></td>
-							
-							<% if p.status == 'Open' && p.valid?(current_user.id) %>
-
-								<td id="join" style="font-weight: bold; font-size: 1.1em"><%= link_to 'Join', package_public_reservation_path(@package, p) %></td> 
-
-							<% else %>
-
-								<td></td>
-
-							<% end %>
-
-						</tr>
-						<% count += 1 %>
 				<% end %>
-			</table>
-		<% end %>
-		</div>
+
+				</div>
+
+			</div>
+
+			<div class="row content first-content">
+
+				<div class="col-md-2 details title-details">
+					<p>Description</p>
+				</div>
+
+				<div class="col-md-8 details">
+					<p><%=@package.description%>
+						
+						The HoneyComb Pod is in my organic durian orchard. The orchard has 3 HoneyComb Pods, which I believe is the only one in Malaysia or Asia. Each pod has 2 single beds or 1 queen bed, the sleeping space is 6'x7', so sleeping with 2 adults+2 young kids is just fine.
+
+The orchard is farmed in the natural permaculture way. No chemical is used to fertelize or to kill insects. Thus, the place looks like a natural forest in certain places, cause we try to mimic nature. Plenty of forest trees have been planted as well, though still small to make any impact, it will in a few years time. Many other fruits have been planted, coconuts, bananas, langsat, rambutan, pulasan, mangoesteen, pomelo, avocado, lemon, and many more. There is also a veggies farm. We intend to provide guests with some organic veggies in the future.
+
+There is a river which is crystal clear where you can sleep on it to cool down on a hot day. You may get your sun tan this way too, as the water level isn't too high. I suggest walking up stream bare foot for foot reflexology. There are many different kind of fish in the river, it will be a good lesson for your kids to learn wild life too. We have spotted eagle, owls and many different birds around, so if you are a bird watcher, this is a good place. We also have bird that make unique bird nest. At night, you may see fireflies around, especially the durian trees. Please off all the lights for best observation. Star gazing is also another good activity to do at night.
+
+Bring your bicycles to cycle around the chinese village or to go up Fraser's Hill for a down hill leasure ride. Fraser's Hill is only 20 mins away. It is quite convenient with the chinese village around, you can buy almost anything at the village's convenient shop. If you are a hiker, hike up our durian hill and venture into the small forest reserve(I haven't ventured up personally, so hike at your own risk). Up on the hill, you can get a soothing calming view of the area. Meditate if you wish.
+
+We have BBQ pit, and we suggest you bring your wire mesh or aluminum foils, charcoal and firewood. You can get charcoal at the convenient store.
+
+If you have more people, I have another cabin with attached bathroom, pantry & dinning table for 4.
+https://www.airbnb.com/rooms/13046218
+
+If you need only single pod for 2, book here
+https://www.airbnb.com/rooms/4218638
+
+
+					</p>
+				</div>
+				
+				<div class="col-md-2">
+
+						<% if user_signed_in? && @user == current_user %>
+							<%= button_to "Create a Public Tour" , "/packages/#{@package.id}/public_reservations/new", method: "get" %><br/>
+							<%= button_to "Create a Private Tour" , "/packages/#{@package.id}/private_reservations/new", method: "get" %>
+
+						<% end %> 
+					
+				</div>
+
+			</div>
+				
+			<div class="row content">
+			
+				<div class="col-md-2 details title-details">
+					<p>Accommodation</p>
+				</div>
+
+				<div class="col-md-8 details">
+					<p><%= @package.accommodation %> </p>
+				</div>
+
+			</div>		
+
+			<div class="row content">
+			
+				<div class="col-md-2 details title-details">
+					<p>Meals</p>
+				</div>
+
+				<div class="col-md-8 details">
+					<p><%= @package.meal %> </p>
+				</div>
+
+			</div>		
+
+			<div class="row content">
+			
+				<div class="col-md-2 details title-details">
+					<p>Transportation</p>
+				</div>
+
+				<div class="col-md-8 details">
+					<p><%= @package.transportation %> however I hope jf sadjf skalfj  sidfj asidfjklsv sioadhj skvj slak vhas dfhaskdvhasjhv ;vansdjlvhsdiovhsadlvhasdjvhasfvhasfjlvhasl;</p>
+				</div>
+
+			</div>		
+
+			<div class="row content">
+			
+				<div class="col-md-2 details title-details" id="private">
+					<p>Private Tour</p>
+				</div>
+
+				<div class="col-md-8 details">
+					<p>RM <%= @package.private_price %></p>
+					</div>
+
+				<% if user_signed_in? && @user != current_user %>
+	
+							
+					<div class="col-md-2 details">
+							<%= button_to "Request to Book" , "/packages/#{@package.id}/private_reservations/new", method: "get" , id:"request-to-book"%>
+
+					</div>
+
+				<% end %>
+
+			
+			</div>		
+
+			<div class="available-tour">	
+				<h3 style="color:grey; font-weight:bold">Open Tours</h3>
+
+					<% if @public_reservations.any? %>
+
+						<table class="table table-hover" >
+								<tr>
+									<th>No</th>
+									<th>Start date</th>
+									<th>End date</th>
+									<th>Price per pax</th>
+									<th>Participants</th>
+									<th>Status</th>
+									<th></th>
+									<th></th>
+								</tr>
+
+								<% count = 1 %>
+
+							<% @public_reservations.each do |p| %>
+
+								<tr class="clickableRow" data-link="<%= package_public_reservation_path(@package, p) %>" style:"cursor:pointer">
+
+									<td><%= count %></td>
+									<td><%= p.start_date %></td>
+									<td><%= p.end_date %></td>
+									<td>RM<%= p.public_price %></td>
+									<td><%= p.count_participants %>/<%= @package.head %></td>
+									<td class='<%=p.status%>', id='<%=p.status%>'><%= p.status %></td>
+									
+									<% if p.status == 'Open' && p.valid?(current_user.id) %>
+
+										<td id="join" style="font-weight: bold; font-size: 1.1em"><%= link_to 'Book', package_public_reservation_path(@package, p) %></td> 
+
+									<% else %>
+
+										<td></td>
+
+									<% end %>
+
+								<td><span id="count_down_2"> <%= p.count_down %></span></td>
+
+								</tr>
+								<% count += 1 %>
+						<% end %>
+					</table>
+				<% end %>
+			</div>
+					
+				<% if user_signed_in? && @user != current_user %>
+					<p>Can't find suitable tour? <%= button_to "Create your Own?", root_path %></p>
+				<% end %>
 	</div>
 </div>
-
+</div>

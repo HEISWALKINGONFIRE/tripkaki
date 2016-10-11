@@ -1,7 +1,12 @@
-<h1>PrivateReservations#Edit</h1>
+<div class="container" , id="private-form-edit">
 
-<%= form_for @private_reservation, method: :patch, url: private_reservation_path do |f| %>
-	<%= render "form", f: f %>
-<% end %>
+	<h1>PrivateReservations#Edit</h1>
 
-<%= link_to "Cancel", @private_reservation %>
+		<%= form_for @private_reservation, method: :patch, url: private_reservation_path do |f| %>
+			<%= render "form", f: f %>
+		<% end %>
+
+		<%= link_to "Cancel", @private_reservation %>
+	
+
+</div>

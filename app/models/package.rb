@@ -105,4 +105,20 @@ class Package < ActiveRecord::Base
  	def state_name
  		Carmen::Country.coded(self.country).subregions.coded(self.state).name
  	end
+
+ 	def activities
+ 		self.destination.split(',')
+ 	end
+
+	def count_days
+	  result = self.day
+
+	  if result > 1
+	    return result.to_s + ' Days'
+	  else
+	    return '1 Day'
+	  end
+
+  end
+
 end
