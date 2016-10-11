@@ -68,8 +68,9 @@
 .card__content {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	// justify-content: space-around;
 }
 .card__package {
 	width: 30%;
+	margin: inherit auto;  
 }

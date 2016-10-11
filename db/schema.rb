@@ -17,21 +17,12 @@ ActiveRecord::Schema.define(version: 20161007081011) do
   enable_extension "plpgsql"
 
   create_table "packages", force: :cascade do |t|
-<<<<<<< HEAD
     t.string   "title"
     t.string   "destination"
     t.string   "state"
     t.string   "country"
     t.integer  "day"
     t.text     "description"
-=======
-    t.string   "title",          null: false
-    t.string   "destination"
-    t.string   "state",          null: false
-    t.string   "country",        null: false
-    t.integer  "day",            null: false
-    t.text     "description",    null: false
->>>>>>> 32022dfc697b04873f23bb73bd7959292cf73830
     t.string   "accommodation"
     t.string   "transportation"
     t.string   "meal"
