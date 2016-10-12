@@ -51,9 +51,13 @@
 	padding: 50px;
 }
 .card-block {
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+	// box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
 	padding: 20px;
 	font-size: 20px;
+
+	#links{
+		font-size: 14px;
+	}
 }
 .card-title {
 	width: 100%;

@@ -10,28 +10,36 @@
 
      <!-- inner -->
     <div class="carousel-inner cont-slider" role="listbox">
-      <div class="item active">
-        <img src="/square.jpg" alt="The Great Mosque">
-      </div>
-      <div class="item">
-        <img src="/cave.jpg" alt="The Great Cave">
-      </div>
-      <div class="item">
-        <img src="/Towers.jpg" alt="The Great Tower">
-      </div>
+      <% if @package.images.present? %>
+        <% @package.images.each_with_index do |img, i| %>
+          <% if i == 0 %>
+            <div class="item active">
+              <%= image_tag img.url %>
+            </div>
+          <% else %>
+            <div class="item">
+              <%= image_tag img.url %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
 
     <!-- indicators -->
 	<ol class="carousel-indicators">
-    <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
-      <img alt="" src="/square.jpg">
-    </li>
-    <li class="" data-slide-to="1" data-target="#article-photo-carousel">
-      <img alt="" src="/cave.jpg">
-    </li>
-    <li class="" data-slide-to="2" data-target="#article-photo-carousel">
-      <img alt="" src="/Towers.jpg">
-    </li>
+    <% if @package.images.present? %>
+        <% @package.images.each_with_index do |img, i| %>
+          <% if i == 0 %>
+            <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
+              <%= image_tag img.url %>
+            </li>
+          <% else %>
+            <li class="" data-slide-to="1" data-target="#article-photo-carousel">
+              <%= image_tag img.url %>
+            </li>
+          <% end %>
+        <% end %>
+      <% end %>
   </ol>
 
     <!-- controls -->

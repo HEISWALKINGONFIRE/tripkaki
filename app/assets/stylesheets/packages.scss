@@ -137,7 +137,9 @@
 		font-size: 14px;
 	}
 
+
 #description
+
 {
 	width: 500px;
 	height: 50px;
@@ -155,10 +157,10 @@
 
 #submit
 {
-	width: 100px;
-	height: 30px;
-	border-radius: 30px;
-	background-color: white;
+	// width: 100px;
+	// height: 30px;
+	// border-radius: 30px;
+	// background-color: white;
 }
 
 tr.clickableRow { 
@@ -385,6 +387,7 @@ body {
 	font-weight: bold;
 	border-radius: 8px;
 }
+
 
 #request-to-book:hover {
 		opacity:0.7;
