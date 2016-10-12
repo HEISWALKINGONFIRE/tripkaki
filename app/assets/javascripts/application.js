@@ -32,7 +32,9 @@ $(function() {
       $("#filterrific_date_range").show();
     }
 	$(".index_page").css("height", $(window).height()+"px");
-	$(".bg2").css("height", $(window).height()+"px");
+  $(".bg1").css("height", $(window).height()+$("footer").height()+"px");
+  $(".bg2").css("height", $(window).height()+"px");
+  $(".bg3").css("height", $(window).height()+$("footer").height()+"px");
 	$(".role-selection input").on("click", function() {
 		$(this).parent().submit();
 	});
