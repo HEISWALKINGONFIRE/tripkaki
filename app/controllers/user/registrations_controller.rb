@@ -10,7 +10,6 @@ prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
   end
 
   def choose
-    # byebug
     @role = params[:role]
     build_resource({})
     respond_to do |format|
@@ -39,6 +38,7 @@ prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
       clean_up_passwords resource
       set_minimum_password_length
       resource.errors.full_messages.each {|x| flash[x] = x} # Rails 4 simple way
+      @role = params[:user][:role]
       render 'users/registrations/new'
     end
   end
