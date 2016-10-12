@@ -21,12 +21,7 @@
     </thead>
     <% packages.each do |package| %>
           <tr>       
-            <% if package.respond_to? :start_date %>
-              <td><%= link_to package.title, package_public_reservation_path(package.id, package.public_id) %> </td>
-            <% else %>
-              <td><%= link_to package.title, package %> </td>
-            <% end %> 
-
+            <td><%= link_to package.title, package %> </td>
             <td><%= package.country_name %></td>
             <td><%= package.state_name %></td>
             <% if package.respond_to? :start_date %>

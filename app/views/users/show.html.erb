@@ -7,7 +7,7 @@
 			    <% if @user.profile_picture.url.nil? %>
 							<%= image_tag("user_pic-225x225.png") %>
 					<% else %>
-						<%= image_tag(@user.profile_picture.thumb.url) %>
+						<%= image_tag(@user.profile_picture.square.url) %>
 					<% end %>
 				</div>
 			</div>
