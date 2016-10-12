@@ -1,6 +1,5 @@
 class ImageUploader < CarrierWave::Uploader::Base
 	include CarrierWave::MiniMagick
-	include Cloudinary::CarrierWave
 	storage :file
 
 	version :large do
