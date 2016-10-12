@@ -4,6 +4,25 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.hidden_field :role, :value => @role.to_i %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, class:"form-control" %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, class:"form-control" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
@@ -19,6 +38,11 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div>
+    <%= f.label :profile_picture %><br/>
+    <%= f.file_field :profile_picture, multiple: false %>
   </div>
 
   <div class="actions">
