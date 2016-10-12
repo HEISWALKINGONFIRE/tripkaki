@@ -1,6 +1,6 @@
 class PackagesController < ApplicationController
 
-  before_action :authenticate_tour_guide!, only: [:new, :create, :edit, :delete, :update]
+  before_action :authenticate_tour_guide!, except: [:index]
 
   def index
   
@@ -87,7 +87,7 @@ class PackagesController < ApplicationController
   end
 
   def authenticate_tour_guide!
-    redirect_to root_path unless current_user.role == "tour_guide"
+    redirect_to root_path, notice: "Please Sign In to continue" unless current_user.role == "tour_guide"
   end
 
 
