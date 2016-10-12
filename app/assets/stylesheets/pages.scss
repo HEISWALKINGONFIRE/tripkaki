@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .bg1 {
-  background-image: url("kuala-lumpur-city-view-HD.jpg"), linear-gradient(rgba(0,0,0,.23), rgba(0,0,0,1));
+  background-image: url(asset-path("kuala-lumpur-city-view-HD.jpg")), linear-gradient(rgba(0,0,0,.23), rgba(0,0,0,1));
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
