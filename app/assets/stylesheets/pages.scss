@@ -4,7 +4,8 @@
 .bg1 {
   background-image: url(asset-path("kuala-lumpur-city-view-HD.jpg"));
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto, 100%;
+  background-position: center;
   position: absolute;
   z-index: -2;
   width: 100%;
