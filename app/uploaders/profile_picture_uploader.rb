@@ -15,7 +15,7 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
 	end
 
 	version :square do
-		process :resize_to_limit => [300, 300]
+		process :resize_to_limit => [220, 220]
 	end
 
 	def extension_whitelist

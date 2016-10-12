@@ -1,9 +1,10 @@
-<div class="container", id="private-form-new">
+<div class="container">
+	<div class="private-reservation">
 
-		<h1>PrivateReservations#New</h1>
+		<h1>Private Reservations</h1>
 
 		<%= form_for @private_reservation, url: package_private_reservations_path do |f| %>
 			<%= render "form", f: f %>
 		<% end %>
-
+	</div>
 </div>
