@@ -1,7 +1,9 @@
 class User::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
+
 prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
+# before_action :configure_permitted_parameters, if: :devise_controller?
   # GET /resource/sign_up
   def new
     render 'users/registrations/choose'
@@ -41,9 +43,9 @@ prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
   end
 
   # GET /resource/edit
-  def edit
-    super
-  end
+  # def edit
+  #   super
+  # end
 
   # PUT /resource
   # def update
@@ -81,8 +83,9 @@ prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:email, :username, :first_name, :last_name, :profile_picture, :password, :password_confirmation, :current_password])
   # end
+ 
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
