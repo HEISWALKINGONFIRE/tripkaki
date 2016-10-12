@@ -38,7 +38,8 @@ prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
     else
       clean_up_passwords resource
       set_minimum_password_length
-      respond_with resource
+      resource.errors.full_messages.each {|x| flash[x] = x} # Rails 4 simple way
+      render 'users/registrations/new'
     end
   end
 
