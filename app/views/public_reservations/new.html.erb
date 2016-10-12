@@ -11,22 +11,31 @@
 	<% end %>
   
 
-<h2>Make a public tour for <%= @package.title %></h2>
+
 <div class="container">
+	<div class="public-reservation">
+		<div class="public-reservation-title">
+			<h2>Make a public tour for <%= @package.title %></h2>
+		</div>
+			<%= form_for [@package, @public_reservation] do |f| %>
+			<div class="form-group">
+				<%= f.label :public_price, "Price per pax" %>
+				<%= f.text_field :public_price, placeholder:"Price per pax", class:"form-control" %>
+			</div>
 
-	<%= form_for [@package, @public_reservation] do |f| %>
+			<div class="form-group">
+				<%= f.label :start_date %>
+				<%= f.text_field :start_date, placeholder:"Click to select", id:'from', class:"form-control" %>
+			</div>
+				
+			<div class="form-group">
+				<%= f.label :end_date %>
+				<%= f.text_field :end_date, placeholder:"Click to select", id:'to', class:"form-control" %>
+			</div>
 
-		<%= f.label :public_price, "Price per pax" %>
-		<%= f.text_field :public_price %>
+				<%= f.submit :submit, class:"btn btn-success btn-lg" %>
 
-		<%= f.label :start_date %>
-		<%= f.text_field :start_date, id:'from' %>
-
-		<%= f.label :end_date %>
-		<%= f.text_field :end_date, id:'to' %>
-
-		<%= f.submit :submit %>
-
-	<% end %>
-
+			<% end %>
+			
+	</div>
 </div>	
