@@ -1,27 +1,35 @@
 <div class="container">
 	<div class="user-profile">
 
-		<div class="card card-block">
-		    <h2 class="card-title"><strong>Profile</strong></h2>
-		    <p>Name: <%= @user.first_name + " " + @user.last_name  %></p>
-		    <p>Email: <%= @user.email %></p>
-
+		<div class="card card-block card__top">
+	    <h2 class="card-title"><strong>Profile</strong></h2>
+	    <div class="card__image">
 		    <% if @user.profile_picture.url.nil? %>
-				<%= image_tag("user_pic-225x225.png") %>
-			<% else %>
-				<%= image_tag(@user.profile_picture.thumb.url) %>
-			<% end %>
-
-		    <% if @packages.present? %>
-		    	<% @packages.each do |p| %>
-			    	<p>Tours: <%=link_to p.title, package_path(p.id), method: 'get'%></p>
-			   	<% end %>
+					<%= image_tag("user_pic-225x225.png") %>
+				<% else %>
+					<%= image_tag(@user.profile_picture.thumb.url) %>
+				<% end %>
+			</div>
+			<div class="card__top_details">
+		    <h2><%= @user.first_name + " " + @user.last_name  %></h2>
+		    <p><%= mail_to @user.email %></p>
+		    <p><%= "I am a #{@user.position}" %></p>
+		  </div>
+	  </div>
+	  <% if @user.role == "tour_guide" %>
+	  	<h3>Available Packages</h3>
+	  <% end %>
+	  <div class="card__content">
+	    <% if @packages.present? %>
+	    	<% @packages.each do |p| %>
+		    	<div class="card-block card__package"><%=link_to p.title, package_path(p.id), method: 'get'%></div>
+		   	<% end %>
 			<% end %>
 			<% @user.private_reservations.each do |private_reservation| %>
 				<p>Reservation: <%= link_to private_reservation.package.title, private_reservation %></p>
 			<% end %> 
+
+			</div>
 			<%= link_to "Edit Profile", edit_user_url, method: "get", class: "btn btn-danger"  %>
-			
-		</div>
 	</div>
 </div>	

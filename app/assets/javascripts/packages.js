@@ -1,5 +1,14 @@
 $(document).ready(function() {
 
+  setInterval(function() {
+    // your code goes here...
+  
+     $("#bounce").effect( "bounce", {times:3}, 1500 );
+
+  }, 8 * 1000);
+
+ 
+
   $("tr[data-link]").click(function() {
     window.location = $(this).data("link")
   }); 

@@ -47,10 +47,30 @@
 	padding-right: 300px;
 	padding-left: 300px;
 }
-
+.user-profile {
+	padding: 50px;
+}
 .card-block {
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
 	padding: 20px;
-	margin: 50px;	
 	font-size: 20px;
+}
+.card-title {
+	width: 100%;
+}
+.card__top {
+	display: flex;
+	flex-wrap: wrap;
+}
+.card__image {
+	width: 30%;
+}
+.card__content {
+	display: flex;
+	flex-wrap: wrap;
+	// justify-content: space-around;
+}
+.card__package {
+	width: 30%;
+	margin: inherit auto;  
 }

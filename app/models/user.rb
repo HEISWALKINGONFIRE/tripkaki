@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
   }
   before_save :assign_role_if_not_exists
 
+  def position
+    self.role == "tour_guide" ? "Tour guide" : "Tourist"
+  end
+
   private
 
   def assign_role_if_not_exists
