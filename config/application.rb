@@ -3,6 +3,7 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord' 
+require 'carrierwave/storage/fog'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

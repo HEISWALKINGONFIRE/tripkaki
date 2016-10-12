@@ -41,9 +41,10 @@ prepend_before_action :set_minimum_password_length, only: [:new, :edit, :choose]
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    byebug
+    super
+  end
 
   # PUT /resource
   # def update

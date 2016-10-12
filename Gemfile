@@ -25,6 +25,7 @@ gem 'braintree'
 gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
 gem "jquery-scrollto-rails"
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
@@ -39,5 +40,4 @@ end
 group :production do
 	gem 'rails_12factor'
 	gem 'puma'
-	gem 'fog'
 end
